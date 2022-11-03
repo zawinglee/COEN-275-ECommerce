@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" prefHeight="230.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.ProductController">
+    <ImageView fx:id="productImage" fitHeight="134.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
+        <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </VBox.margin>
+        <Image url="@../../../img/electronic/iphone14pro.png" />
+    </ImageView>
+
+    <Label fx:id="title" alignment="CENTER" text="title" wrapText="true">
+      <font>
+         <Font size="20.0" />
+      </font>
+    </Label>
+    <Label fx:id="name" alignment="CENTER" text="name" textAlignment="CENTER" />
+    <Label fx:id="description" alignment="CENTER" text="description" textAlignment="CENTER" />
+
+</VBox>
