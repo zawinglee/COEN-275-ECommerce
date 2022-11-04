@@ -14,12 +14,34 @@
         <Image url="@../../../img/electronic/iphone14pro.png" />
     </ImageView>
 
-    <Label fx:id="title" alignment="CENTER" text="title" wrapText="true">
-      <font>
-         <Font size="20.0" />
-      </font>
-    </Label>
-    <Label fx:id="name" alignment="CENTER" text="name" textAlignment="CENTER" />
-    <Label fx:id="description" alignment="CENTER" text="description" textAlignment="CENTER" />
+    <VBox alignment="CENTER_RIGHT" prefHeight="96.0" prefWidth="200.0">
+        <VBox.margin>
+            <Insets>
+                <top>20</top>
+            </Insets>
+        </VBox.margin>
+        <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefWidth="200" text="brand" wrapText="true">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="description" alignment="CENTER" contentDisplay="CENTER" prefWidth="200" text="name" textAlignment="CENTER" />
+        <Label fx:id="price" alignment="CENTER" contentDisplay="CENTER" prefWidth="200" text="description" textAlignment="CENTER" />
+        <Button fx:id="addToCartButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0">
+            <VBox.margin>
+                <Insets>
+                    <right>10</right>
+                </Insets>
+            </VBox.margin>
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../img/icons/addToCart.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+    </VBox>
 
 </VBox>
