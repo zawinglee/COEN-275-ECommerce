@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -50,6 +51,9 @@ public class LoginController implements Initializable {
     @FXML
     private BorderPane loginPane;
 
+    @FXML
+    private CheckBox isAdmin;
+
     public static Map<String, String> users = new HashMap<>();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -77,6 +81,7 @@ public class LoginController implements Initializable {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
+
 
     public void validateLogin(){
         try {

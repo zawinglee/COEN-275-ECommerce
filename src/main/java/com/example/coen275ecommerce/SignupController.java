@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -51,6 +52,12 @@ public class SignupController implements Initializable {
 
     @FXML
     private Label passwordMatchLabel;
+
+    @FXML
+    private CheckBox asUserCheckBox;
+
+    @FXML
+    private CheckBox asAdminCheckBox;
 
     @FXML
     private Pane signupPane;
