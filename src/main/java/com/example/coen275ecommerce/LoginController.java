@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.stage.StageStyle;
@@ -25,6 +26,9 @@ public class LoginController implements Initializable {
     private Button cancelButton;
 
     @FXML
+    Button signupButton;
+
+    @FXML
     private Label loginMessageLabel;
 
     @FXML
@@ -38,6 +42,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private TextField enterPasswordField;
+
+    @FXML
+    private BorderPane loginPane;
 
     private Map<String, String> users = new HashMap<>();
     @Override
@@ -87,10 +94,30 @@ public class LoginController implements Initializable {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("mainPage.fxml"));
             Stage stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load(), 820, 500);
+            stage.setTitle("COEN 275, Group 3, E-Commerce");
+            stage.setScene(scene);
+            stage.show();
+            loginPane.getScene().getWindow().hide();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void signupButtonOnAction(ActionEvent event) {
+        createAccount();
+    }
+
+    private void createAccount(){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("signupPage.fxml"));
+            Stage stage = new Stage();
             Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
             stage.setTitle("COEN 275, Group 3, E-Commerce");
             stage.setScene(scene);
             stage.show();
+            loginPane.getScene().getWindow().hide();
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();

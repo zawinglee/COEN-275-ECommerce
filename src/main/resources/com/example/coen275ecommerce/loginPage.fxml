@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.LoginController">
+<BorderPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.LoginController">
    <left>
       <AnchorPane prefHeight="407.0" prefWidth="228.0" BorderPane.alignment="CENTER">
          <children>
@@ -34,8 +34,9 @@
             <Label layoutX="88.0" layoutY="184.0" text="Password" />
             <PasswordField fx:id="enterPasswordField" layoutX="164.0" layoutY="180.0" prefHeight="26.0" prefWidth="173.0" promptText="Password" />
             <Button fx:id="loginButton" layoutX="97.0" layoutY="243.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="32.0" prefWidth="240.0" text="Login" />
-            <Button fx:id="cancelButton" layoutX="97.0" layoutY="283.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="32.0" prefWidth="240.0" text="Cancel" />
+            <Button fx:id="cancelButton" layoutX="97.0" layoutY="338.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="32.0" prefWidth="240.0" text="Cancel" />
             <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="15.0" layoutY="215.0" prefHeight="17.0" prefWidth="405.0" textFill="#f50808" />
+            <Button fx:id="signupButton" layoutX="98.0" layoutY="292.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="32.0" prefWidth="240.0" text="Sign Up" />
          </children>
       </AnchorPane>
    </right>
