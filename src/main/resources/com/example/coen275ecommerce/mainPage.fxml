@@ -5,23 +5,64 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="mainPageAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.MainPage">
+<AnchorPane fx:id="mainPageAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.MainPage">
     <children>
         <AnchorPane fx:id="leftPanel" prefHeight="700.0" prefWidth="200.0" style="-fx-background-color: lightblue;">
             <children>
-                <Button fx:id="electronicBtn" layoutX="97.0" layoutY="108.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="128.0" style="-fx-background-color: transparent;" text="Electronic" AnchorPane.bottomAnchor="600.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="39.0">
-                    <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../../img/electronic/electronicIcon.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-               <font>
-                  <Font size="20.0" />
-               </font>
-                </Button>
+                <VBox alignment="TOP_RIGHT" prefWidth="200">
+                    <Button fx:id="electronBtn" onAction="#onCategorySelected" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Electronic">
+                        <graphic>
+                            <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../img/electronic/electronicIcon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="menBtn" onAction="#onCategorySelected" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Men">
+                        <graphic>
+                            <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../img/electronic/electronicIcon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="womenBtn" onAction="#onCategorySelected" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Women">
+                        <graphic>
+                            <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../img/electronic/electronicIcon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Button>
+                </VBox>
             </children>
+        </AnchorPane>
+        <AnchorPane fx:id="electronPanel" layoutX="200" prefHeight="700.0" prefWidth="1000.0">
+            <VBox fx:id="electronVBox">
+                <ScrollPane prefHeight="700.0" prefWidth="1000.0">
+                    <content>
+                        <GridPane fx:id="electronGridPane" prefHeight="15.0" prefWidth="0.0">
+
+                        </GridPane>
+                    </content>
+                </ScrollPane>
+            </VBox>
+        </AnchorPane>
+        <AnchorPane fx:id="menPanel" layoutX="200" prefHeight="700.0" prefWidth="1000.0" visible="false">
+        </AnchorPane>
+        <AnchorPane fx:id="womenPanel" layoutX="200" prefHeight="700.0" prefWidth="1000.0" visible="false">
         </AnchorPane>
     </children>
 </AnchorPane>
