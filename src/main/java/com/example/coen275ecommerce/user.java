@@ -1,4 +1,4 @@
-package com.example.coen275ecommerce.entity;
+package com.example.coen275ecommerce;
 
 public class user {
     private String username;

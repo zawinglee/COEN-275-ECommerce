@@ -1,6 +1,5 @@
-package com.example.coen275ecommerce.controller;
+package com.example.coen275ecommerce;
 
-import com.example.coen275ecommerce.EntryPoint;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

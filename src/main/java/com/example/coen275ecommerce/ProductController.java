@@ -1,6 +1,5 @@
-package com.example.coen275ecommerce.controller;
+package com.example.coen275ecommerce;
 
-import com.example.coen275ecommerce.entity.Product;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

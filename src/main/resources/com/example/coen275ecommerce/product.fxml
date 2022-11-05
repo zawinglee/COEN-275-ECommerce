@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" prefHeight="230.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.controller.ProductController">
+<VBox alignment="TOP_CENTER" prefHeight="230.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.ProductController">
     <ImageView fx:id="productImage" fitHeight="134.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
         <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
