@@ -52,7 +52,7 @@ public class LoginController implements Initializable {
     private BorderPane loginPane;
 
     @FXML
-    private CheckBox isAdmin;
+    private CheckBox isAdminCheckBox;
 
     public static Map<String, String> users = new HashMap<>();
     @Override
@@ -87,7 +87,7 @@ public class LoginController implements Initializable {
         try {
             String curUserName = usernameTextField.getText();
             String curPassword = enterPasswordField.getText();
-            int isAdmin = 0;
+            int admin = isAdminCheckBox.isSelected() ? 1 : 0;
             int count = 0;
             Connection c = null;
             Statement stmt = null;
@@ -99,7 +99,7 @@ public class LoginController implements Initializable {
 
                 stmt = c.createStatement();
                 String sql = "SELECT count(*) FROM User WHERE userName = "  + "'" + curUserName + "'" + " AND password = " + "'" + curPassword + "'"
-                        + "AND isAdmin = " + String.valueOf(isAdmin);
+                        + "AND isAdmin = " + String.valueOf(admin);
                 ResultSet rs = stmt.executeQuery( sql);
                 while ( rs.next() ) {
                     count=rs.getInt(1);
@@ -118,7 +118,7 @@ public class LoginController implements Initializable {
                 loginMessageLabel.setText("Welcome!");
                 MainPage(curUserName);
             }else{
-                loginMessageLabel.setText("Incorrect username or password. Please try again!");
+                loginMessageLabel.setText("Incorrect username or password or admin type. Please try again!");
             }
         } catch (Exception e) {
             e.printStackTrace();

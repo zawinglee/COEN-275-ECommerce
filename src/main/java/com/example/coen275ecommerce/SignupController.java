@@ -64,6 +64,8 @@ public class SignupController implements Initializable {
     private Pane signupPane;
 
     Map<String, String> users = LoginController.users;
+
+    private int isAdmin;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File shieldFile = new File("src/main/resources/img/signup/shield.png");
@@ -94,27 +96,42 @@ public class SignupController implements Initializable {
     }
 
     public void signupButtonOnAction(ActionEvent event){
-
-        if(usernameTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false && confirmPasswordTextField.getText().isBlank()==false) {
-            String curUsername = usernameTextField.getText();
-            if(checkUserName(curUsername)) usernameCheckLabel.setText("This Username already exists. Please try another one.");
-            else {
-                if (passwordTextField.getText().equals(confirmPasswordTextField.getText())) {
-                    registerUser();
+        boolean asUser = asUserCheckBox.isSelected(), asAdmin = asAdminCheckBox.isSelected();
+        isAdmin = asAdmin ? 1 : 0;
+        if(asUser && asAdmin) {
+            usernameCheckLabel.setText("");
+            passwordMatchLabel.setText("");
+            signupMessageLabel.setText("You can not sign up as user and administrator simultaneously.");
+        }
+        else {
+            if(usernameTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false
+                    && confirmPasswordTextField.getText().isBlank()==false && (asUser || asAdmin)) {
+                String curUsername = usernameTextField.getText();
+                if(checkUserName(curUsername)) {
                     passwordMatchLabel.setText("");
-                    usernameCheckLabel.setText("");
-                    signupMessageLabel.setText("Sign Up Successfully!");
+                    signupMessageLabel.setText("");
+                    usernameCheckLabel.setText("This Username already exists. Please try another one.");
                 }
-                else{
-                    usernameCheckLabel.setText("");
-                    passwordMatchLabel.setText("Password Doesn't Match. Please try again.");
+                else {
+                    if (passwordTextField.getText().equals(confirmPasswordTextField.getText())) {
+                        registerUser();
+                        passwordMatchLabel.setText("");
+                        usernameCheckLabel.setText("");
+                        signupMessageLabel.setText("Sign Up Successfully!");
+                    }
+                    else{
+                        usernameCheckLabel.setText("");
+                        signupMessageLabel.setText("");
+                        passwordMatchLabel.setText("Password Doesn't Match. Please try again.");
+                    }
                 }
             }
+            else{
+                usernameCheckLabel.setText("");
+                signupMessageLabel.setText("");
+                passwordMatchLabel.setText("Please fill all details.");
+            }
         }
-        else{
-            passwordMatchLabel.setText("Please fill all details.");
-        }
-
     }
 
     public boolean checkUserName(String userName){
@@ -153,7 +170,7 @@ public class SignupController implements Initializable {
         users.put(username, password);
         Connection c;
         Statement stmt;
-        insertUser(username, password, 0);
+        insertUser(username, password, isAdmin);
     }
 
     public static void insertUser(String userName, String password, int isAdmin) {
