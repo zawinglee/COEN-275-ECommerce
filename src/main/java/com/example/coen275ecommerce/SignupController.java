@@ -20,6 +20,7 @@ import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -96,7 +97,7 @@ public class SignupController implements Initializable {
 
         if(usernameTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false && confirmPasswordTextField.getText().isBlank()==false) {
             String curUsername = usernameTextField.getText();
-            if(users.containsKey(curUsername)) usernameCheckLabel.setText("This Username already exists. Please try another one.");
+            if(checkUserName(curUsername)) usernameCheckLabel.setText("This Username already exists. Please try another one.");
             else {
                 if (passwordTextField.getText().equals(confirmPasswordTextField.getText())) {
                     registerUser();
@@ -114,6 +115,36 @@ public class SignupController implements Initializable {
             passwordMatchLabel.setText("Please fill all details.");
         }
 
+    }
+
+    public boolean checkUserName(String userName){
+        Connection c;
+        Statement stmt = null;
+        int count = 0;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:test.db");
+            c.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            stmt = c.createStatement();
+            String sql = "SELECT count(*) FROM User WHERE userName = "  + "'" + userName + "'";
+            ResultSet rs = stmt.executeQuery(sql);
+            while ( rs.next() ) {
+                count=rs.getInt(1);
+            }
+            rs.close();
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Operation done successfully");
+        if(count>0){
+            return true;
+        }
+        return false;
     }
 
     public void registerUser(){
