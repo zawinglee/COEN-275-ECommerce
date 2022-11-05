@@ -46,7 +46,7 @@ public class LoginController implements Initializable {
     @FXML
     private BorderPane loginPane;
 
-    private Map<String, String> users = new HashMap<>();
+    public static Map<String, String> users = new HashMap<>();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         users.put("Lizheng", "1234");
@@ -94,7 +94,7 @@ public class LoginController implements Initializable {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("mainPage.fxml"));
             Stage stage = new Stage();
-            Scene scene = new Scene(fxmlLoader.load(), 820, 500);
+            Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
             stage.setTitle("COEN 275, Group 3, E-Commerce");
             stage.setScene(scene);
             stage.show();
@@ -116,6 +116,7 @@ public class LoginController implements Initializable {
             Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
             stage.setTitle("COEN 275, Group 3, E-Commerce");
             stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
             loginPane.getScene().getWindow().hide();
         } catch (Exception e) {
