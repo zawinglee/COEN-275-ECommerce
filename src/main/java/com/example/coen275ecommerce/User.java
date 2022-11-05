@@ -1,6 +1,6 @@
 package com.example.coen275ecommerce;
 
-public class user {
+public class User {
     private String username;
     private String password;
 

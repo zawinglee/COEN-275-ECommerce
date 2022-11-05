@@ -55,7 +55,7 @@ public class SignupController implements Initializable {
     Map<String, String> users = LoginController.users;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        File shieldFile = new File("/Users/mac/COEN-275-ECommerce/src/main/resources/img/signup/shield.png");
+        File shieldFile = new File("src/main/resources/img/signup/shield.png");
         Image shieldImg = new Image(shieldFile.toURI().toString());
         shieldImgView.setImage(shieldImg);
     }

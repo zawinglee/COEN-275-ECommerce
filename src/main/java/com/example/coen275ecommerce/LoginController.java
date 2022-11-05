@@ -52,11 +52,11 @@ public class LoginController implements Initializable {
         users.put("Jackson", "1234");
         users.put("Mark", "5678");
         users.put("Bob", "6789");
-        File brandingFile = new File("/Users/mac/COEN-275-ECommerce/src/main/resources/img/login/loginMain.png");
+        File brandingFile = new File("src/main/resources/img/login/loginMain.png");
         Image brandingImg = new Image(brandingFile.toURI().toString());
         brandingImgView.setImage(brandingImg);
 
-        File lockFile = new File("/Users/mac/COEN-275-ECommerce/src/main/resources/img/login/lock.png");
+        File lockFile = new File("src/main/resources/img/login/lock.png");
         Image lockImg = new Image(lockFile.toURI().toString());
         lockImgView.setImage(lockImg);
     }
