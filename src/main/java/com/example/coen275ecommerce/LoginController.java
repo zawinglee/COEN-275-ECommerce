@@ -49,7 +49,9 @@ public class LoginController implements Initializable {
     public static Map<String, String> users = new HashMap<>();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        users.put("Lizheng", "1234");
+        users.put("Jackson", "1234");
+        users.put("Mark", "5678");
+        users.put("Bob", "6789");
         File brandingFile = new File("/Users/mac/COEN-275-ECommerce/src/main/resources/img/login/loginMain.png");
         Image brandingImg = new Image(brandingFile.toURI().toString());
         brandingImgView.setImage(brandingImg);
