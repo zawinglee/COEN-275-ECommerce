@@ -1,5 +1,6 @@
-package com.example.coen275ecommerce;
+package com.example.coen275ecommerce.controller;
 
+import com.example.coen275ecommerce.EntryPoint;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -82,7 +83,7 @@ public class LoginController implements Initializable {
                 String curPassword = enterPasswordField.getText();
                 if(password.equals(curPassword)) {
                     loginMessageLabel.setText("Welcome!");
-                    MainPage();
+                    MainPage(curUserName);
                 }
             }else{
                 loginMessageLabel.setText("Incorrect username or password. Please try again!");
@@ -93,12 +94,12 @@ public class LoginController implements Initializable {
         }
     }
 
-    private void MainPage(){
+    private void MainPage(String username){
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("mainPage.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
-            stage.setTitle("COEN 275, Group 3, E-Commerce");
+            stage.setTitle("COEN 275, Group 3, E-Commerce: "+username);
             stage.setScene(scene);
             stage.show();
             loginPane.getScene().getWindow().hide();

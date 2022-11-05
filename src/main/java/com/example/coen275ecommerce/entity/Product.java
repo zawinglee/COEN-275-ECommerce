@@ -1,4 +1,4 @@
-package com.example.coen275ecommerce;
+package com.example.coen275ecommerce.entity;
 
 public class Product {
     private String imageSource;
