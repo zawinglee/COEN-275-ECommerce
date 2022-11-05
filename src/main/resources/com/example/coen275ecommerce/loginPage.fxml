@@ -46,16 +46,19 @@
                <font>
                   <Font size="15.0" />
                </font></PasswordField>
-            <Button fx:id="loginButton" layoutX="169.0" layoutY="299.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="36.0" prefWidth="321.0" text="Login">
+            <Button fx:id="loginButton" layoutX="169.0" layoutY="318.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="36.0" prefWidth="321.0" text="Login">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button fx:id="cancelButton" layoutX="169.0" layoutY="413.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="36.0" prefWidth="321.0" text="Cancel">
+            <Button fx:id="cancelButton" layoutX="169.0" layoutY="432.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="36.0" prefWidth="321.0" text="Cancel">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="15.0" layoutY="215.0" prefHeight="17.0" prefWidth="405.0" textFill="#f50808" />
-            <Button fx:id="signupButton" layoutX="169.0" layoutY="356.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="36.0" prefWidth="321.0" text="Sign Up">
+            <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="55.0" layoutY="266.0" prefHeight="38.0" prefWidth="524.0" textFill="#f50808">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Button fx:id="signupButton" layoutX="169.0" layoutY="375.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="36.0" prefWidth="321.0" text="Sign Up">
                <font>
                   <Font size="15.0" />
                </font></Button>

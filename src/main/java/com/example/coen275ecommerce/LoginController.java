@@ -83,7 +83,7 @@ public class LoginController implements Initializable {
                     MainPage();
                 }
             }
-            if(!find) loginMessageLabel.setText("Invalid Login. Please try again!");
+            if(!find) loginMessageLabel.setText("Incorrect username or password. Please try again!");
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
