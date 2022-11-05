@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -37,16 +38,16 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="484.0" layoutY="316.0" prefHeight="34.0" prefWidth="160.0" text="Confirm Password">
+      <Label layoutX="483.0" layoutY="314.0" prefHeight="34.0" prefWidth="160.0" text="Confirm Password">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Button fx:id="signupButton" alignment="CENTER" layoutX="483.0" layoutY="474.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="34.0" prefWidth="381.0" style="-fx-background-color: #1DACBC;" text="Sign Up" textFill="WHITE">
+      <Button fx:id="signupButton" alignment="CENTER" layoutX="486.0" layoutY="546.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="34.0" prefWidth="381.0" style="-fx-background-color: #1DACBC;" text="Sign Up" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="goBackButton" alignment="CENTER" layoutX="481.0" layoutY="540.0" mnemonicParsing="false" onAction="#goBackButtonOnAction" prefHeight="34.0" prefWidth="381.0" style="-fx-background-color: #1DACBC;" text="Go Back" textFill="WHITE">
+      <Button fx:id="goBackButton" alignment="CENTER" layoutX="484.0" layoutY="612.0" mnemonicParsing="false" onAction="#goBackButtonOnAction" prefHeight="34.0" prefWidth="381.0" style="-fx-background-color: #1DACBC;" text="Go Back" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -56,25 +57,35 @@
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <PasswordField fx:id="confirmPasswordTextField" layoutX="482.0" layoutY="360.0" prefHeight="34.0" prefWidth="381.0" promptText="Confirm Password">
+      <PasswordField fx:id="confirmPasswordTextField" layoutX="481.0" layoutY="358.0" prefHeight="34.0" prefWidth="381.0" promptText="Confirm Password">
          <font>
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Label fx:id="passwordMatchLabel" alignment="CENTER" layoutX="114.0" layoutY="412.0" prefHeight="35.0" prefWidth="1153.0" textFill="#f80000">
+      <Label fx:id="passwordMatchLabel" alignment="CENTER" layoutX="113.0" layoutY="488.0" prefHeight="35.0" prefWidth="1153.0" textFill="#f80000">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="signupMessageLabel" alignment="CENTER" layoutX="102.0" layoutY="412.0" prefHeight="35.0" prefWidth="1153.0" textFill="#00f719">
+      <Label fx:id="signupMessageLabel" alignment="CENTER" layoutX="103.0" layoutY="487.0" prefHeight="35.0" prefWidth="1153.0" textFill="#00f719">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="usernameCheckLabel" alignment="CENTER" layoutX="115.0" layoutY="412.0" prefHeight="35.0" prefWidth="1140.0" textFill="#f80000">
+      <Label fx:id="usernameCheckLabel" alignment="CENTER" layoutX="110.0" layoutY="485.0" prefHeight="35.0" prefWidth="1140.0" textFill="#f80000">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <CheckBox fx:id="asUserCheckBox" layoutX="491.0" layoutY="416.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="163.0" text="Sign up as a user">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="asAdminCheckBox" layoutX="674.0" layoutY="416.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" text="Sign up as an administrator">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
    </children>
 </AnchorPane>
