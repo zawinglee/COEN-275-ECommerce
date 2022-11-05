@@ -6,6 +6,6 @@ module com.example.coen275ecommerce {
     requires mysql.connector.java;
 
 
-    opens com.example.coen275ecommerce to javafx.fxml;
+    opens com.example.coen275ecommerce.controller to javafx.fxml;
     exports com.example.coen275ecommerce;
 }
