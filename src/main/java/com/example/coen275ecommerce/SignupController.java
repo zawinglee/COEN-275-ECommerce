@@ -92,6 +92,8 @@ public class SignupController implements Initializable {
             else {
                 if (passwordTextField.getText().equals(confirmPasswordTextField.getText())) {
                     registerUser();
+                    passwordMatchLabel.setText("");
+                    usernameCheckLabel.setText("");
                     signupMessageLabel.setText("Sign Up Successfully!");
                 }
                 else{

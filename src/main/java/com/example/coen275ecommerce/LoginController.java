@@ -74,16 +74,17 @@ public class LoginController implements Initializable {
 
     public void validateLogin(){
         try {
-            boolean find = false;
-            for (String username : users.keySet()) {
-                String password = users.get(username);
-                if (usernameTextField.getText().equals(username) && enterPasswordField.getText().equals(password)) {
+            String curUserName = usernameTextField.getText();
+            if(users.containsKey(curUserName)){
+                String password = users.get(curUserName);
+                String curPassword = enterPasswordField.getText();
+                if(password.equals(curPassword)) {
                     loginMessageLabel.setText("Welcome!");
-                    find = true;
                     MainPage();
                 }
+            }else{
+                loginMessageLabel.setText("Incorrect username or password. Please try again!");
             }
-            if(!find) loginMessageLabel.setText("Incorrect username or password. Please try again!");
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
