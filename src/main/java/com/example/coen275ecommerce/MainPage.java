@@ -5,10 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,7 +21,7 @@ public class MainPage implements Initializable {
     @FXML private AnchorPane mainPageAnchor;
     @FXML private AnchorPane leftPanel;
 
-    @FXML private Button electronBtn, menBtn, womenBtn;
+    @FXML private Button electronBtn, menBtn, womenBtn, logoutButton, shoppingCartButton;
 
     @FXML private AnchorPane electronPanel, menPanel, womenPanel;
     @FXML private VBox electronVBox;
@@ -75,6 +78,44 @@ public class MainPage implements Initializable {
             electronPanel.setVisible(false);
             menPanel.setVisible(false);
             womenPanel.setVisible(true);
+        }
+    }
+
+    public void logoutButtonOnAction(ActionEvent event){
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        stage.close();
+
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("loginPage.fxml"));
+            Stage loginStage = new Stage();
+            loginStage.setTitle("COEN 275, Group 3, E-Commerce");
+            Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
+            loginStage.setScene(scene);
+            loginStage.initStyle(StageStyle.UNDECORATED);
+            loginStage.show();
+            mainPageAnchor.getScene().getWindow().hide();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void shoppingCartButtonOnAction(ActionEvent event) {
+
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("shoppingCart.fxml"));
+            Stage loginStage = new Stage();
+            loginStage.setTitle("COEN 275, Group 3, E-Commerce");
+            Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
+            loginStage.setScene(scene);
+            loginStage.show();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
         }
     }
 }

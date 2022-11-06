@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPageAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.MainPage">
+<AnchorPane fx:id="mainPageAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.MainPage">
     <children>
         <AnchorPane fx:id="leftPanel" prefHeight="700.0" prefWidth="200.0" style="-fx-background-color: lightblue;">
             <children>
                 <VBox alignment="TOP_RIGHT" prefWidth="200">
-                    <Button fx:id="electronBtn" onAction="#onCategorySelected" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Electronic">
+                    <Button fx:id="electronBtn" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="157.0" style="-fx-background-color: transparent;" text="Electronic">
                         <graphic>
                             <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -22,7 +26,7 @@
                             <Font size="20.0" />
                         </font>
                     </Button>
-                    <Button fx:id="menBtn" onAction="#onCategorySelected" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Men">
+                    <Button fx:id="menBtn" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="212.0" style="-fx-background-color: transparent;" text="Men">
                         <graphic>
                             <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -34,7 +38,7 @@
                             <Font size="20.0" />
                         </font>
                     </Button>
-                    <Button fx:id="womenBtn" onAction="#onCategorySelected" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Women">
+                    <Button fx:id="womenBtn" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Women">
                         <graphic>
                             <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -47,6 +51,8 @@
                         </font>
                     </Button>
                 </VBox>
+            <Button fx:id="logoutButton" layoutX="14.0" layoutY="660.0" mnemonicParsing="false" onAction="#logoutButtonOnAction" text="Log Out" />
+            <Button fx:id="shoppingCartButton" layoutX="14.0" layoutY="603.0" mnemonicParsing="false" onAction="#shoppingCartButtonOnAction" text="Shopping Cart" />
             </children>
         </AnchorPane>
         <AnchorPane fx:id="electronPanel" layoutX="200" prefHeight="700.0" prefWidth="1000.0">
