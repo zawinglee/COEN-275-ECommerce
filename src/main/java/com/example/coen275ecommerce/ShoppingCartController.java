@@ -54,7 +54,7 @@ public class ShoppingCartController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+//        showProducts();
     }
 
     public ObservableList<ProductInCart> getProductsInCart(){

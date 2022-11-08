@@ -4,18 +4,36 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
 
 <BorderPane fx:id="shoppingCartPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.ShoppingCartController">
    <left>
-      <AnchorPane prefHeight="700.0" prefWidth="372.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="700.0" prefWidth="372.0" style="-fx-background-color: #C3E2F3;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="24.0" layoutY="89.0" text="Product Id">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="139.0" text="Product Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="deleteButton" layoutX="26.0" layoutY="193.0" mnemonicParsing="false" text="Delete Item" />
+            <TextField layoutX="141.0" layoutY="86.0" prefHeight="25.0" prefWidth="201.0" />
+            <TextField layoutX="141.0" layoutY="135.0" prefHeight="25.0" prefWidth="198.0" />
+         </children>
+      </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="700.0" prefWidth="1162.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="700.0" prefWidth="1162.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="cartTableView" layoutX="-2.0" layoutY="80.0" prefHeight="510.0" prefWidth="931.0">
+            <TableView fx:id="cartTableView" layoutX="1.0" layoutY="80.0" prefHeight="510.0" prefWidth="928.0">
               <columns>
                   <TableColumn fx:id="productId" prefWidth="75.0" text="Product Id " />
                 <TableColumn fx:id="productName" prefWidth="200.44357299804688" text="Product name" />
@@ -28,7 +46,6 @@
             <Button fx:id="placeOrderButton" layoutX="635.0" layoutY="629.0" mnemonicParsing="false" text="Place Order" />
             <Button fx:id="continueShoppingButton" layoutX="781.0" layoutY="629.0" mnemonicParsing="false" onAction="#continueShoppingButtonOnAction" text="Continue Shopping" />
             <Label layoutX="153.0" layoutY="19.0" prefHeight="41.0" prefWidth="514.0" text="Label" />
-            <Button fx:id="deleteButton" layoutX="474.0" layoutY="629.0" mnemonicParsing="false" text="Delete Item" />
          </children>
       </AnchorPane>
    </right>
