@@ -21,7 +21,7 @@ public class MainPage implements Initializable {
     @FXML private AnchorPane mainPageAnchor;
     @FXML private AnchorPane leftPanel;
 
-    @FXML private Button electronBtn, menBtn, womenBtn, logoutButton, shoppingCartButton;
+    @FXML private Button electronBtn, menBtn, womenBtn, logoutButton, shoppingCartButton, ordersButton;
 
     @FXML private AnchorPane electronPanel, menPanel, womenPanel;
     @FXML private VBox electronVBox;
@@ -104,9 +104,28 @@ public class MainPage implements Initializable {
 
     public void shoppingCartButtonOnAction(ActionEvent event) {
 
+        Stage stage = (Stage) shoppingCartButton.getScene().getWindow();
+        stage.close();
+
         try{
 
             FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("shoppingCart.fxml"));
+            Stage loginStage = new Stage();
+            loginStage.setTitle("COEN 275, Group 3, E-Commerce");
+            Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
+            loginStage.setScene(scene);
+            loginStage.show();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void ordersButtonOnAction(ActionEvent event){
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("orderpage.fxml"));
             Stage loginStage = new Stage();
             loginStage.setTitle("COEN 275, Group 3, E-Commerce");
             Scene scene = new Scene(fxmlLoader.load(), 1300, 700);

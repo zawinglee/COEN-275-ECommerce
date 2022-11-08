@@ -168,8 +168,6 @@ public class SignupController implements Initializable {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         users.put(username, password);
-        Connection c;
-        Statement stmt;
         insertUser(username, password, isAdmin);
     }
 

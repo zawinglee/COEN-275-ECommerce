@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.coen275ecommerce.ShoppingCartController"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<BorderPane fx:id="shoppingCartPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.ShoppingCartController">
+   <left>
+      <AnchorPane prefHeight="700.0" prefWidth="372.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="700.0" prefWidth="1162.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="cartTableView" layoutX="-2.0" layoutY="80.0" prefHeight="510.0" prefWidth="931.0">
+              <columns>
+                  <TableColumn fx:id="productId" prefWidth="75.0" text="Product Id " />
+                <TableColumn fx:id="productName" prefWidth="200.44357299804688" text="Product name" />
+                <TableColumn fx:id="productDescription" minWidth="0.0" prefWidth="260.55645751953125" text="Product Description" />
+                  <TableColumn fx:id="productPrice" prefWidth="106.72174072265625" text="Product Price" />
+                  <TableColumn fx:id="productQuanty" prefWidth="141.13055419921875" text="Quantity" />
+                  <TableColumn fx:id="totalPrice" prefWidth="142.26953125" text="Total Price" />
+              </columns>
+            </TableView>
+            <Button fx:id="placeOrderButton" layoutX="635.0" layoutY="629.0" mnemonicParsing="false" text="Place Order" />
+            <Button fx:id="continueShoppingButton" layoutX="781.0" layoutY="629.0" mnemonicParsing="false" onAction="#continueShoppingButtonOnAction" text="Continue Shopping" />
+            <Label layoutX="153.0" layoutY="19.0" prefHeight="41.0" prefWidth="514.0" text="Label" />
+            <Button fx:id="deleteButton" layoutX="474.0" layoutY="629.0" mnemonicParsing="false" text="Delete Item" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

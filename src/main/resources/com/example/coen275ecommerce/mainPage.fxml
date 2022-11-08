@@ -52,7 +52,8 @@
                     </Button>
                 </VBox>
             <Button fx:id="logoutButton" layoutX="14.0" layoutY="660.0" mnemonicParsing="false" onAction="#logoutButtonOnAction" text="Log Out" />
-            <Button fx:id="shoppingCartButton" layoutX="14.0" layoutY="603.0" mnemonicParsing="false" onAction="#shoppingCartButtonOnAction" text="Shopping Cart" />
+            <Button fx:id="shoppingCartButton" layoutX="14.0" layoutY="618.0" mnemonicParsing="false" onAction="#shoppingCartButtonOnAction" text="Shopping Cart" />
+            <Button fx:id="ordersButton" layoutX="14.0" layoutY="574.0" mnemonicParsing="false" onAction="#ordersButtonOnAction" text="Orders" />
             </children>
         </AnchorPane>
         <AnchorPane fx:id="electronPanel" layoutX="200" prefHeight="700.0" prefWidth="1000.0">
