@@ -1,15 +1,17 @@
 package com.example.coen275ecommerce;
 
 public class ProductInCart {
-    private int id;
     private String name;
     private String description;
-    private int price;
+    private String price;
     private int quantity;
-    private int totalPrice;
+    private String totalPrice;
 
-    public ProductInCart(int id, String name, String description, int price, int quantity, int totalPrice) {
-        this.id = id;
+    public ProductInCart(){
+
+    }
+
+    public ProductInCart(String name, String description, String  price, int quantity, String  totalPrice) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -17,13 +19,6 @@ public class ProductInCart {
         this.totalPrice = totalPrice;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -41,11 +36,11 @@ public class ProductInCart {
         this.description = description;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -57,11 +52,11 @@ public class ProductInCart {
         this.quantity = quantity;
     }
 
-    public int getTotalPrice() {
+    public String getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
     }
 }

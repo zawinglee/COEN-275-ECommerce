@@ -54,6 +54,8 @@ public class LoginController implements Initializable {
     @FXML
     private CheckBox isAdminCheckBox;
 
+    private static String pageUsername;
+
     public static Map<String, String> users = new HashMap<>();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -116,6 +118,7 @@ public class LoginController implements Initializable {
 
             if(count>0){
                 loginMessageLabel.setText("Welcome!");
+                pageUsername = curUserName;
                 MainPage(curUserName);
             }else{
                 loginMessageLabel.setText("Incorrect username or password or admin type. Please try again!");
@@ -159,7 +162,10 @@ public class LoginController implements Initializable {
             e.printStackTrace();
             e.getCause();
         }
+
     }
 
-
+    public static String getPageName(){
+        return pageUsername;
+    }
 }
