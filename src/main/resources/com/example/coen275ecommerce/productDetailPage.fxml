@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.ProductDetailPageController">
+   <children>
+      <HBox fx:id="topHBox" alignment="CENTER_LEFT" prefHeight="300.0" style="-fx-background-color: grey;">
+         <children>
+            <ImageView fx:id="imgSource" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+                  <Image url="@../../../img/electronic/iphone14pro.png" />
+            </ImageView>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="800.0">
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="title" text="title">
+                     <font>
+                        <Font size="30.0" />
+                     </font></Label>
+                  <Label fx:id="description" text="description">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="price" text="price">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="soldBy" text="sold by">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="starRating" text="star rating">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin></Label>
+               </children>
+            </VBox>
+         </children></HBox>
+      <ListView fx:id="customersReviewListView" prefHeight="500.0" />
+   </children>
+</VBox>

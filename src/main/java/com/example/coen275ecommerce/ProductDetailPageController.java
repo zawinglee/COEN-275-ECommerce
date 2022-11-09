@@ -7,10 +7,9 @@ import javafx.scene.image.ImageView;
 
 import java.util.Objects;
 
-public class ProductController {
+public class ProductDetailPageController {
     @FXML
-    private ImageView productImage;
-
+    private ImageView imgSource;
     @FXML
     private Label title;
     @FXML
@@ -18,14 +17,17 @@ public class ProductController {
     @FXML
     private Label price;
     @FXML
-    private Label quantity;
+    private Label soldBy;
+    @FXML
+    private Label starRating;
 
     public void configureUI(Product product) {
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(product.getImageSource())));
-        productImage.setImage(image);
+        imgSource.setImage(image);
         title.setText(product.getTitle());
         price.setText("$" + String.valueOf(product.getPrice()));
         description.setText(product.getDescription());
-        quantity.setText(String.valueOf(product.getQuantity()));
+        soldBy.setText("Sold By: " + product.getOwnBy());
+        starRating.setText("Overall Rating: " + String.valueOf(product.getStarRating()) + " / 5.0");
     }
 }

@@ -15,11 +15,11 @@
     </ImageView>
 
     <VBox alignment="CENTER_RIGHT" prefHeight="96.0" prefWidth="200.0">
-        <VBox.margin>
-            <Insets>
-                <top>20</top>
-            </Insets>
-        </VBox.margin>
+<!--        <VBox.margin>-->
+<!--            <Insets>-->
+<!--                <top>20</top>-->
+<!--            </Insets>-->
+<!--        </VBox.margin>-->
         <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefWidth="200" text="brand" wrapText="true">
             <font>
                 <Font size="20.0" />
@@ -27,6 +27,15 @@
         </Label>
         <Label fx:id="description" alignment="CENTER" contentDisplay="CENTER" prefWidth="200" text="name" textAlignment="CENTER" />
         <Label fx:id="price" alignment="CENTER" contentDisplay="CENTER" prefWidth="200" text="description" textAlignment="CENTER" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" text="available: ">
+               <HBox.margin>
+                  <Insets right="1.0" />
+               </HBox.margin></Label>
+            <Label fx:id="quantity" text="50" />
+         </children>
+      </HBox>
         <Button fx:id="addToCartButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0">
             <VBox.margin>
                 <Insets>

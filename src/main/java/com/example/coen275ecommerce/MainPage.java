@@ -38,7 +38,7 @@ public class MainPage implements Initializable {
                 fxml.setLocation(getClass().getResource("product.fxml"));
                 electronVBox = fxml.load();
                 ProductController productController = fxml.getController();
-                productController.configure(elec);
+                productController.configureUI(elec);
 
                 electronGridPane.add(electronVBox, 0, 0);
                 GridPane.setMargin(electronVBox, new Insets(10));

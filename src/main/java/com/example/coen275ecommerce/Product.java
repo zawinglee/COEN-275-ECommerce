@@ -5,6 +5,42 @@ public class Product {
     private String title;
     private int price;
     private String description;
+    private int id;
+    private int quantity;
+    private double starRating;
+    private String ownBy;
+
+    public String getOwnBy() {
+        return ownBy;
+    }
+
+    public void setOwnBy(String ownBy) {
+        this.ownBy = ownBy;
+    }
+
+    public double getStarRating() {
+        return starRating;
+    }
+
+    public void setStarRating(double starRating) {
+        this.starRating = starRating;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public String getTitle() {
         return title;
