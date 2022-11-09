@@ -33,7 +33,6 @@ public class ProductController {
         nameLabel.setText(product.getTitle());
         priceLabel.setText("$" + String.valueOf(product.getPrice()));
         descriptionLabel.setText(product.getDescription());
-        System.out.println(LoginController.getPageName());
         ProductInCart prodInCart = SelectDB.selectProdFromCart(LoginController.getPageName(), product.getTitle());
         count = prodInCart == null ? 0 : prodInCart.getQuantity();
         quantityLabel.setText(count+"");
