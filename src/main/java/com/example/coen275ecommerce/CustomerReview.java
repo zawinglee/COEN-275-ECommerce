@@ -2,11 +2,11 @@ package com.example.coen275ecommerce;
 
 public class CustomerReview {
     String authorUsername;
-    int numericRating;
+    double numericRating;
     String textRating;
     int productID;
 
-    public CustomerReview(String authorUsername, int numericRating, String textRating, int productID) {
+    public CustomerReview(String authorUsername, double numericRating, String textRating, int productID) {
         this.authorUsername = authorUsername;
         this.numericRating = numericRating;
         this.textRating = textRating;
@@ -29,11 +29,11 @@ public class CustomerReview {
         this.authorUsername = authorUsername;
     }
 
-    public int getNumericRating() {
+    public double getNumericRating() {
         return numericRating;
     }
 
-    public void setNumericRating(int numericRating) {
+    public void setNumericRating(double numericRating) {
         this.numericRating = numericRating;
     }
 
