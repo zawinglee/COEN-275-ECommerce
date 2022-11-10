@@ -1,5 +1,6 @@
 package com.example.coen275ecommerce;
 
+import db.DeleteDB;
 import javafx.event.ActionEvent;
 import db.InsertDB;
 import db.SelectDB;
@@ -31,6 +32,8 @@ public class ProductController {
     private Label availableLabel;
     @FXML
     private Button addToCartButton;
+    @FXML
+    private Button minusButton;
     int inCartCount;
 
     private Product product;
@@ -76,6 +79,33 @@ public class ProductController {
             UpdateDB.updateProdInCart(curUsername, product);
         }
 
+    }
+
+    public void minusButtonOnAction(ActionEvent event) {
+        String prod_name = nameLabel.getText();
+        String priceString = priceLabel.getText();
+        String curUsername = LoginController.getPageName();
+
+
+        ProductInCart product = SelectDB.selectProdFromCart(curUsername, prod_name);
+        if(product == null){
+            return;
+        }else {
+            int quantityInCart = product.getQuantity();
+            if(quantityInCart == 1) {
+                DeleteDB.deleteProdInCart(curUsername, prod_name);
+            }
+            else if(quantityInCart > 1) {
+                product.setQuantity(quantityInCart - 1);
+                int signIndex = priceString.indexOf("$");
+                int price = Integer.parseInt(priceString.substring(signIndex + 1));
+                product.setTotalPrice("$"+(product.getQuantity() * price));
+                UpdateDB.updateProdInCart(curUsername, product);
+            }
+        }
+
+        inCartCount--;
+        cartQuantityLabel.setText(inCartCount +"");
     }
 
     @FXML private void showProductDetailPage() {
