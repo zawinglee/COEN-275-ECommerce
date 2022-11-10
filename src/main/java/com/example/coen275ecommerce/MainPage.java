@@ -131,6 +131,9 @@ public class MainPage implements Initializable {
     }
 
     public void ordersButtonOnAction(ActionEvent event){
+        Stage stage = (Stage) shoppingCartButton.getScene().getWindow();
+        stage.close();
+
         try{
 
             FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("orderpage.fxml"));

@@ -1,9 +1,6 @@
 package com.example.coen275ecommerce;
 
-import db.CreateDB;
-import db.DeleteDB;
-import db.SelectDB;
-import db.UpdateDB;
+import db.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +18,10 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ShoppingCartController implements Initializable {
@@ -163,6 +164,11 @@ public class ShoppingCartController implements Initializable {
             placeOrderMssgLabel.setText("Oops... Your cart is empty.");
             return;
         }
+        List<ProductInCart> productInCartList = SelectDB.selectProdListFromCart(username);
+        Date now = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String orderTime = dateFormat.format(now);
+        for (ProductInCart product : productInCartList) InsertDB.insertProdToOrders(username, product, orderTime);
         DeleteDB.deleteForPlaceOrder(username);
         try{
 

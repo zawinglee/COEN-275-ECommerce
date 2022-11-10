@@ -3,7 +3,9 @@ import com.example.coen275ecommerce.Product;
 import com.example.coen275ecommerce.ProductInCart;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -66,6 +68,34 @@ public class SelectDB {
         }
         System.out.println("Operation done successfully");
         return prod;
+    }
+
+    public static List<ProductInCart> selectProdListFromCart(String username) {
+        List<ProductInCart> list = new ArrayList<>();
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:test.db");
+            c.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            stmt = c.createStatement();
+            String sql = "SELECT * FROM Shopping_Cart WHERE USER_NAME = "  + "'" + username + "'" + ";";
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while (resultSet.next()) {
+                ProductInCart prod = new ProductInCart(resultSet.getString("PROD_NAME"), resultSet.getString("DESCRIPTION"), resultSet.getString("PRICE"), resultSet.getInt("QUANTITY"), resultSet.getString("TOTAL_PRICE"));
+                list.add(prod);
+            }
+            resultSet.close();
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Operation done successfully");
+        return list;
     }
 
     public static int selectProdFromCart(String username) {

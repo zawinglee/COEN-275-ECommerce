@@ -69,6 +69,42 @@ public class InsertDB
         System.out.println("Records created successfully");
     }
 
+    public static void insertProdToOrders(String userName, ProductInCart product, String orderTime) {
+        Connection connection = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection("jdbc:sqlite:test.db");
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            stmt = connection.createStatement();
+            String prodName = product.getName();
+            String description = product.getDescription();
+            String price = product.getPrice();
+            int quantity = product.getQuantity();
+            String totalPrice = product.getTotalPrice();
+            String sql = "INSERT INTO Orders (USER_NAME,PROD_NAME, DESCRIPTION, PRICE, QUANTITY, TOTAL_PRICE, ORDER_TIME) " +
+                    "VALUES ("  + "'" + userName + "'" + ","
+                    + "'" + prodName + "'" + ","
+                    + "'" + description + "'" + ","
+                    + "'" + price + "'" + ","
+                    + "'" + quantity + "'" + ","
+                    + "'"+ totalPrice + "'"+","
+                    + "'"+ orderTime + "'"
+                    +");";
+            System.out.println(sql);
+            stmt.executeUpdate(sql);
+            stmt.close();
+            connection.commit();
+            connection.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Records created successfully");
+    }
+
     public static void insertProdToSystem(String prodName, int price, int quantity, String description, String img, String adminName) {
         Connection connection = null;
         Statement stmt = null;

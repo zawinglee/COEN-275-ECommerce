@@ -1,11 +1,16 @@
 package com.example.coen275ecommerce;
 
+
+import java.util.Date;
+
 public class ProductInCart {
     private String name;
     private String description;
     private String price;
     private int quantity;
     private String totalPrice;
+
+    private String orderTime;
 
     public ProductInCart(){
 
@@ -58,5 +63,13 @@ public class ProductInCart {
 
     public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
     }
 }
