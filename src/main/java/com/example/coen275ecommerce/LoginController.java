@@ -119,7 +119,7 @@ public class LoginController implements Initializable {
             if(count>0){
                 loginMessageLabel.setText("Welcome!");
                 pageUsername = curUserName;
-                MainPage(curUserName);
+                MainPage(curUserName, admin);
             }else{
                 loginMessageLabel.setText("Incorrect username or password or admin type. Please try again!");
             }
@@ -129,15 +129,25 @@ public class LoginController implements Initializable {
         }
     }
 
-    private void MainPage(String username){
+    private void MainPage(String username, int admin){
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("mainPage.fxml"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
-            stage.setTitle("COEN 275, Group 3, E-Commerce: "+username);
-            stage.setScene(scene);
-            stage.show();
-            loginPane.getScene().getWindow().hide();
+            if(admin == 0){
+                FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("mainPage.fxml"));
+                Stage stage = new Stage();
+                Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
+                stage.setTitle("COEN 275, Group 3, E-Commerce: "+username);
+                stage.setScene(scene);
+                stage.show();
+                loginPane.getScene().getWindow().hide();
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("adminPage.fxml"));
+                Stage stage = new Stage();
+                Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
+                stage.setTitle("COEN 275, Group 3, E-Commerce-Admin Page: "+username);
+                stage.setScene(scene);
+                stage.show();
+                loginPane.getScene().getWindow().hide();
+            }
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
