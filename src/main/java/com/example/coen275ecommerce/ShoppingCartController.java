@@ -71,7 +71,8 @@ public class ShoppingCartController implements Initializable {
     public ObservableList<ProductInCart> getProductsInCart(){
         ObservableList<ProductInCart> productInCartList = FXCollections.observableArrayList();
         Connection connection = CreateDB.getConnection();
-        String query = "SELECT * FROM Shopping_Cart";
+        String username = LoginController.getPageName();
+        String query = "SELECT * FROM Shopping_Cart WHERE USER_NAME = " +"'" + username+"' ;";
         Statement statement;
         ResultSet resultSet;
         try {
