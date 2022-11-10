@@ -1,11 +1,9 @@
 package com.example.coen275ecommerce;
 
 import javafx.event.ActionEvent;
-import db.CreateDB;
 import db.InsertDB;
 import db.SelectDB;
 import db.UpdateDB;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,12 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
-import java.sql.Connection;
 import java.util.Objects;
 
 public class ProductController {
@@ -31,10 +26,12 @@ public class ProductController {
     @FXML
     private Label descriptionLabel;
     @FXML
-    private Label priceLabel, quantityLabel;
+    private Label priceLabel, cartQuantityLabel;
+    @FXML
+    private Label availableLabel;
     @FXML
     private Button addToCartButton;
-    int count;
+    int inCartCount;
 
     private Product product;
 
@@ -53,28 +50,29 @@ public class ProductController {
         nameLabel.setText(product.getTitle());
         priceLabel.setText("$" + String.valueOf(product.getPrice()));
         descriptionLabel.setText(product.getDescription());
+        availableLabel.setText("available: " + String.valueOf(product.getQuantity()));
         ProductInCart prodInCart = SelectDB.selectProdFromCart(LoginController.getPageName(), product.getTitle());
-        count = prodInCart == null ? 0 : prodInCart.getQuantity();
-        quantityLabel.setText(count+"");
+        inCartCount = prodInCart == null ? 0 : prodInCart.getQuantity();
+        cartQuantityLabel.setText(inCartCount +"");
     }
 
     public void addToCartButtonOnAction(ActionEvent event) {
-        count++;
-        quantityLabel.setText(count+"");
+        inCartCount++;
+        cartQuantityLabel.setText(inCartCount +"");
         String prod_name = nameLabel.getText();
         String description = descriptionLabel.getText();
         String priceString = priceLabel.getText();
 
         int signIndex = priceString.indexOf("$");
         int price = Integer.parseInt(priceString.substring(signIndex+1));
-        int quantity = Integer.parseInt(quantityLabel.getText());
+        int quantity = Integer.parseInt(cartQuantityLabel.getText());
         int totalPrice = price * quantity;
         String totalPriceString = "$"+totalPrice;
         ProductInCart product = new ProductInCart(prod_name, description, priceString, quantity, totalPriceString);
         String curUsername = LoginController.getPageName();
-        if(count == 1) {
+        if(inCartCount == 1) {
             InsertDB.insertProdToCart(curUsername, product);
-        }else if(count >= 2){
+        }else if(inCartCount >= 2){
             UpdateDB.updateProdInCart(curUsername, product);
         }
 
@@ -95,7 +93,5 @@ public class ProductController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-
     }
 }
