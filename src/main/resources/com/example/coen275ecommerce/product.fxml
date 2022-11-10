@@ -27,21 +27,29 @@
         <Label fx:id="priceLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="200" text="price" textAlignment="CENTER" />
       <Label fx:id="availableLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="60.0" prefWidth="200" text="available" textAlignment="CENTER" />
       <HBox alignment="CENTER_RIGHT">
-         <Button fx:id="minusButton" mnemonicParsing="false" onAction="#minusButtonOnAction" prefHeight="26.0" prefWidth="55.0" text="Minus" />
-          <Button fx:id="addToCartButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#addToCartButtonOnAction" prefHeight="20.0" prefWidth="38.0">
+          <Button fx:id="minusButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#minusButtonOnAction" prefHeight="28.0" prefWidth="33.0">
               <VBox.margin>
                   <Insets>
                       <right>10</right>
                   </Insets>
               </VBox.margin>
               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                       <image>
-                          <Image url="@../../../img/icons/addToCart.png" />
+                          <Image url="@../../../img/icons/minus.png" />
                       </image>
                   </ImageView>
               </graphic>
           </Button>
+         <Button fx:id="addToCartButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="167.0" layoutY="10.0" mnemonicParsing="false" onAction="#addToCartButtonOnAction" prefHeight="21.0" prefWidth="38.0">
+            <graphic>
+               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../img/icons/addToCart.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
           <Label fx:id="cartQuantityLabel">
             <HBox.margin>
                <Insets left="5.0" />
