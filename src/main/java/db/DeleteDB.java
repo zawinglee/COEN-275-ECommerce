@@ -27,4 +27,26 @@ public class DeleteDB {
         }
         System.out.println("Records created successfully");
     }
+
+    public static void deleteForPlaceOrder(String username){
+        Connection connection = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection("jdbc:sqlite:test.db");
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            stmt = connection.createStatement();
+            String sql = "DELETE  FROM Shopping_Cart "+ "WHERE USER_NAME = "+"'"+ username +"'" +";";
+            System.out.println(sql);
+            stmt.executeUpdate(sql);
+            stmt.close();
+            connection.commit();
+            connection.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Records created successfully");
+    }
 }
