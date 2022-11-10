@@ -59,6 +59,10 @@ public class MainPage implements Initializable {
         product.setTitle("Apple iPhone 14 Pro");
         product.setPrice(1299);
         product.setDescription("the latest iPhone!");
+        product.setId(1);
+        product.setQuantity(999);
+        product.setStarRating(4.9);
+        product.setOwnBy("Apple Inc.");
 
         res.add(product);
         return res;

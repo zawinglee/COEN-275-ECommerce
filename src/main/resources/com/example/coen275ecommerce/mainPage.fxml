@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPageAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.MainPage">
+<AnchorPane fx:id="mainPageAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.MainPage">
     <children>
         <AnchorPane fx:id="leftPanel" prefHeight="700.0" prefWidth="200.0" style="-fx-background-color: lightblue;">
             <children>
@@ -56,9 +56,9 @@
             <Button fx:id="ordersButton" layoutX="14.0" layoutY="574.0" mnemonicParsing="false" onAction="#ordersButtonOnAction" text="Orders" />
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="electronPanel" layoutX="200" prefHeight="700.0" prefWidth="1000.0">
+        <AnchorPane fx:id="electronPanel" layoutX="200" prefHeight="700.0" prefWidth="1100.0">
             <VBox fx:id="electronVBox">
-                <ScrollPane prefHeight="700.0" prefWidth="1000.0">
+                <ScrollPane prefHeight="700.0" prefWidth="1100.0">
                     <content>
                         <GridPane fx:id="electronGridPane" prefHeight="15.0" prefWidth="0.0">
 
@@ -67,9 +67,9 @@
                 </ScrollPane>
             </VBox>
         </AnchorPane>
-        <AnchorPane fx:id="menPanel" layoutX="200" prefHeight="700.0" prefWidth="1000.0" visible="false">
+        <AnchorPane fx:id="menPanel" layoutX="200" prefHeight="700.0" prefWidth="1100.0" visible="false">
         </AnchorPane>
-        <AnchorPane fx:id="womenPanel" layoutX="200" prefHeight="700.0" prefWidth="1000.0" visible="false">
+        <AnchorPane fx:id="womenPanel" layoutX="200" prefHeight="700.0" prefWidth="1100.0" visible="false">
         </AnchorPane>
     </children>
 </AnchorPane>
