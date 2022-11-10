@@ -63,6 +63,9 @@ public class ShoppingCartController implements Initializable {
     @FXML
     Label deleteMssgLabel;
 
+    @FXML
+    Label placeOrderMssgLabel;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showProducts();
@@ -71,7 +74,8 @@ public class ShoppingCartController implements Initializable {
     public ObservableList<ProductInCart> getProductsInCart(){
         ObservableList<ProductInCart> productInCartList = FXCollections.observableArrayList();
         Connection connection = CreateDB.getConnection();
-        String query = "SELECT * FROM Shopping_Cart";
+        String username = LoginController.getPageName();
+        String query = "SELECT * FROM Shopping_Cart WHERE USER_NAME = " +"'" + username+"' ;";
         Statement statement;
         ResultSet resultSet;
         try {
@@ -107,11 +111,11 @@ public class ShoppingCartController implements Initializable {
         try{
 
             FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("mainPage.fxml"));
-            Stage loginStage = new Stage();
-            loginStage.setTitle("COEN 275, Group 3, E-Commerce");
+            Stage mainStage = new Stage();
+            mainStage.setTitle("COEN 275, Group 3, E-Commerce");
             Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
-            loginStage.setScene(scene);
-            loginStage.show();
+            mainStage.setScene(scene);
+            mainStage.show();
             shoppingCartPane.getScene().getWindow().hide();
 
         }catch (Exception e){
@@ -130,7 +134,7 @@ public class ShoppingCartController implements Initializable {
         }
         ProductInCart product = SelectDB.selectProdFromCart(username, prodName);
         if(product == null){
-            deleteMssgLabel.setText("Please input correct product name.");
+            deleteMssgLabel.setText("This product is not in your shopping cart");
         }else {
             int count = product.getQuantity();
             int quantity = Integer.parseInt(quantityString);
@@ -150,6 +154,30 @@ public class ShoppingCartController implements Initializable {
                 deleteMssgLabel.setText("Please input correct quantity.");
             }
         }
+    }
+
+    public void placeOrderOnAction(ActionEvent event) {
+        String username = LoginController.getPageName();
+        int prodCount = SelectDB.selectProdFromCart(username);
+        if(prodCount == 0) {
+            placeOrderMssgLabel.setText("Oops... Your cart is empty.");
+            return;
+        }
+        DeleteDB.deleteForPlaceOrder(username);
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("placeOrderPage.fxml"));
+            Stage placeOrderStage = new Stage();
+            placeOrderStage.setTitle("COEN 275, Group 3, E-Commerce");
+            Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
+            placeOrderStage.setScene(scene);
+            placeOrderStage.show();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+        showProducts();
     }
 
 }

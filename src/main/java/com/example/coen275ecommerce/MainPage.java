@@ -46,7 +46,7 @@ public class MainPage implements Initializable {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("error in HoodieM");
+            System.out.println("error");
         }
     }
 
@@ -59,6 +59,14 @@ public class MainPage implements Initializable {
         product.setTitle("Apple iPhone 14 Pro");
         product.setPrice(1299);
         product.setDescription("the latest iPhone!");
+        product.setId(1);
+        product.setQuantity(999);
+        product.setStarRating(5.0);
+        product.setOwnBy("Apple Inc.");
+        product.addCustomerReview(new CustomerReview("Abc", 4.8, "good good", 1));
+        product.addCustomerReview(new CustomerReview("GGG", 1.8, "bad bad", 1));
+        product.addCustomerReview(new CustomerReview("CC", 3.8, "so so", 1));
+        product.addCustomerReview(new CustomerReview("DD", 3.9, "not bad", 1));
 
         res.add(product);
         return res;

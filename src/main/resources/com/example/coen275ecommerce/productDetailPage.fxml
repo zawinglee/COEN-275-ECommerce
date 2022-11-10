@@ -56,6 +56,12 @@
                </children>
             </VBox>
          </children></HBox>
-      <ListView fx:id="customersReviewListView" prefHeight="500.0" />
+      <VBox fx:id="customersReviewVBox" prefHeight="400.0">
+         <ScrollPane>
+            <content>
+               <VBox fx:id="customersReviewContainer"/>
+            </content>
+         </ScrollPane>
+      </VBox>
    </children>
 </VBox>

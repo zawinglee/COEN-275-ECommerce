@@ -1,5 +1,7 @@
 package com.example.coen275ecommerce;
 
+import java.util.ArrayList;
+
 public class Product {
     private String imageSource;
     private String title;
@@ -9,6 +11,24 @@ public class Product {
     private int quantity;
     private double starRating;
     private String ownBy;
+    private ArrayList<CustomerReview> customersTextReview = new ArrayList<>();
+
+    public ArrayList<CustomerReview> getCustomersTextReview() {
+        return customersTextReview;
+    }
+
+    public void setCustomersTextReview(ArrayList<CustomerReview> customersTextReview) {
+        this.customersTextReview = customersTextReview;
+    }
+
+    public void addCustomerReview(CustomerReview review) {
+        try {
+            this.customersTextReview.add(review);
+            starRating = Math.round((starRating + review.numericRating) / (customersTextReview.size() + 1) * 10) / 10D;
+        } catch (Exception e) {
+
+        }
+    }
 
     public String getOwnBy() {
         return ownBy;

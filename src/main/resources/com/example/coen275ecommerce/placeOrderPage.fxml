@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.placeOrderController">
+   <children>
+      <Label alignment="CENTER" layoutX="162.0" layoutY="39.0" prefHeight="60.0" prefWidth="1002.0" text="YOUR ORDER RECEIPT" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="345.0" layoutY="131.0" prefHeight="43.0" prefWidth="189.0" text="We got you order, " textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="usernameLabel" layoutX="534.0" layoutY="138.0" textFill="#f2f2f2">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="345.0" layoutY="187.0" prefHeight="29.0" prefWidth="849.0" text="Your items will be on its way soon. We'll send you an update as soon as they ship." textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

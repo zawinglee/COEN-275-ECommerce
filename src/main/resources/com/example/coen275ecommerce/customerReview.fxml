@@ -5,24 +5,26 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.CustomerReviewController">
+<VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.CustomerReviewController">
    <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #C5C6D0;">
-         <children>
-            <Label text="author" fx:id="author">
-               <font>
-                  <Font size="20.0" />
-               </font></Label>
-            <Label text="numericRating" fx:id="numericRating"/>
-         </children>
-      </VBox>
-      <Label text="text review" fx:id="textRating">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <HBox.margin>
-            <Insets left="30.0" />
-         </HBox.margin>
-      </Label>
+      <HBox alignment="CENTER_LEFT">
+         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #C5C6D0;">
+            <children>
+               <Label fx:id="author" text="author">
+                  <font>
+                     <Font size="20.0" />
+                  </font></Label>
+               <Label fx:id="numericRating" text="numericRating" />
+            </children>
+         </VBox>
+         <Label fx:id="textRating" text="text review">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="30.0" />
+            </HBox.margin>
+         </Label>
+      </HBox>
    </children>
-</HBox>
+</VBox>
