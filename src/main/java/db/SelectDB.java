@@ -1,7 +1,10 @@
 package db;
+import com.example.coen275ecommerce.Product;
 import com.example.coen275ecommerce.ProductInCart;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SelectDB {
@@ -90,5 +93,66 @@ public class SelectDB {
         }
         System.out.println("Operation done successfully");
         return count;
+    }
+
+    public static int selectProdFromSystem(String prodName, String adminName) {
+        int count = 0;
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:test.db");
+            c.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            stmt = c.createStatement();
+            String sql = "SELECT count(*) FROM Product WHERE name = "  + "'" + prodName + "'" +
+                    "AND adminName = "+ "'" + adminName + "'" + ";";
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while (resultSet.next()) {
+                count = resultSet.getInt(1);
+            }
+            resultSet.close();
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Operation done successfully");
+        return count;
+    }
+
+    public static Product selectProdResultFromSystem(String prodName, String adminName) {
+        Product prod = null;
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:test.db");
+            c.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            stmt = c.createStatement();
+            String sql = "SELECT * FROM Product WHERE name = "  + "'" + prodName + "'" +
+                    "AND adminName = "+ "'" + adminName + "'" + ";";
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while (resultSet.next()) {
+                prod = new Product();
+                prod.setTitle(resultSet.getString("name"));
+                prod.setPrice(resultSet.getInt("price"));
+                prod.setQuantity(resultSet.getInt("quantity"));
+                prod.setOwnBy(resultSet.getString("adminName"));
+                prod.setDescription(resultSet.getString("description"));
+            }
+            resultSet.close();
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Operation done successfully");
+        return prod;
     }
 }

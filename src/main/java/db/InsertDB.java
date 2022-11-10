@@ -68,4 +68,34 @@ public class InsertDB
         }
         System.out.println("Records created successfully");
     }
+
+    public static void insertProdToSystem(String prodName, int price, int quantity, String description, String img, String adminName) {
+        Connection connection = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection("jdbc:sqlite:test.db");
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            stmt = connection.createStatement();
+            String sql = "INSERT INTO Product (name, image, price, description, quantity, adminName) " +
+                    "VALUES ("  + "'" + prodName + "'" + ","
+                    + "'" + img + "'" + ","
+                    + price + ","
+                    + "'" + description + "'" + ","
+                    +  quantity + ","
+                    +  "'"+ adminName + "'"  +");";
+            System.out.println(sql);
+            stmt.executeUpdate(sql);
+            stmt.close();
+            connection.commit();
+            connection.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Records created successfully");
+    }
 }
+
