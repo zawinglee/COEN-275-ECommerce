@@ -34,6 +34,11 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
+                <Label text="Product Type">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
                 <Label text="Description">
                     <font>
                         <Font size="14.0" />
@@ -46,15 +51,17 @@
                 <TextField fx:id="productNameTextField" />
                 <TextField fx:id="priceTextField" />
                 <TextField fx:id="quantityTextField" layoutX="10.0" layoutY="10.0" />
+                <TextField fx:id="productTypeTextField" layoutX="10.0" layoutY="10.0" />
                 <TextArea fx:id="descriptionTextField" layoutX="10.0" layoutY="35.0" prefHeight="150.0" />
             </children>
         </VBox>
-        <TableView fx:id="productTableView" layoutX="500.0" layoutY="100.0" prefHeight="319.0" prefWidth="600.0">
+        <TableView fx:id="productTableView" layoutX="480.0" layoutY="100.0" prefHeight="450.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="productName" prefWidth="150.0" text="Product Name" />
+                <TableColumn fx:id="productName" prefWidth="100.0" text="Product Name" />
                 <TableColumn fx:id="price" prefWidth="100.0" text="Price" />
                 <TableColumn fx:id="quantity" prefWidth="100.0" text="Quantity" />
-                <TableColumn fx:id="description" prefWidth="250.0" text="Description" />
+                <TableColumn fx:id="productType" prefWidth="100.0" text="Product Type" />
+                <TableColumn fx:id="description" prefWidth="300.0" text="Description" />
             </columns>
         </TableView>
         <Button fx:id="btnInsert" layoutX="50.0" layoutY="360.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="85.0" onAction="#addProductAction" text="Insert" />

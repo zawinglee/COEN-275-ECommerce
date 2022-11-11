@@ -105,7 +105,8 @@ public class InsertDB
         System.out.println("Records created successfully");
     }
 
-    public static void insertProdToSystem(String prodName, int price, int quantity, String description, String img, String adminName) {
+    public static void insertProdToSystem(String prodName, int price, int quantity, String description, String img,
+                                          String adminName, String productType) {
         Connection connection = null;
         Statement stmt = null;
         try {
@@ -115,13 +116,14 @@ public class InsertDB
             System.out.println("Opened database successfully");
 
             stmt = connection.createStatement();
-            String sql = "INSERT INTO Product (name, image, price, description, quantity, adminName) " +
+            String sql = "INSERT INTO Product (name, image, price, description, quantity, adminName, productType) " +
                     "VALUES ("  + "'" + prodName + "'" + ","
                     + "'" + img + "'" + ","
                     + price + ","
                     + "'" + description + "'" + ","
                     +  quantity + ","
-                    +  "'"+ adminName + "'"  +");";
+                    +  "'"+ adminName + "'"  + ","
+                    + "'"+ productType + "'" + ");";
             System.out.println(sql);
             stmt.executeUpdate(sql);
             stmt.close();

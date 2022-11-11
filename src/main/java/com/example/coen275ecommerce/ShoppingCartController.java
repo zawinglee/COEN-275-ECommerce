@@ -169,6 +169,10 @@ public class ShoppingCartController implements Initializable {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String orderTime = dateFormat.format(now);
         for (ProductInCart product : productInCartList) InsertDB.insertProdToOrders(username, product, orderTime);
+        for (ProductInCart shopProduct : productInCartList) {
+            Product product = SelectDB.selectProdResultFromSystemWithProdName(shopProduct.getName());
+            UpdateDB.updateProdWithPlaceOrder(shopProduct.getName(), product.getQuantity() - shopProduct.getQuantity());
+        }
         DeleteDB.deleteForPlaceOrder(username);
         try{
 

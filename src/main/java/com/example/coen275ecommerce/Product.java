@@ -11,6 +11,7 @@ public class Product {
     private int quantity;
     private double starRating;
     private String ownBy;
+    private String productType;
     private ArrayList<CustomerReview> customersTextReview = new ArrayList<>();
 
     public ArrayList<CustomerReview> getCustomersTextReview() {
@@ -92,5 +93,11 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public String getProductType() {
+        return productType;
+    }
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 }

@@ -1,4 +1,5 @@
 package db;
+import com.example.coen275ecommerce.CustomerReview;
 import com.example.coen275ecommerce.Product;
 import com.example.coen275ecommerce.ProductInCart;
 
@@ -174,6 +175,7 @@ public class SelectDB {
                 prod.setQuantity(resultSet.getInt("quantity"));
                 prod.setOwnBy(resultSet.getString("adminName"));
                 prod.setDescription(resultSet.getString("description"));
+                prod.setProductType(resultSet.getString("productType"));
             }
             resultSet.close();
             stmt.close();
@@ -184,5 +186,77 @@ public class SelectDB {
         }
         System.out.println("Operation done successfully");
         return prod;
+    }
+
+    public static Product selectProdResultFromSystemWithProdName(String prodName) {
+        Product prod = null;
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:test.db");
+            c.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            stmt = c.createStatement();
+            String sql = "SELECT * FROM Product WHERE name = "  + "'" + prodName + "'" + ";";
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while (resultSet.next()) {
+                prod = new Product();
+                prod.setTitle(resultSet.getString("name"));
+                prod.setPrice(resultSet.getInt("price"));
+                prod.setQuantity(resultSet.getInt("quantity"));
+                prod.setOwnBy(resultSet.getString("adminName"));
+                prod.setDescription(resultSet.getString("description"));
+                prod.setProductType(resultSet.getString("productType"));
+            }
+            resultSet.close();
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Operation done successfully");
+        return prod;
+    }
+
+    public static ArrayList<Product> selectProdWithProductType(String productType){
+        Connection c = null;
+        Statement stmt = null;
+        ArrayList<Product> prodList = new ArrayList<>();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:test.db");
+            c.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            stmt = c.createStatement();
+            String sql = "SELECT * FROM Product WHERE productType = "  + "'" + productType + "'" + ";";
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while (resultSet.next()) {
+                Product prod = new Product();
+                prod.setTitle(resultSet.getString("name"));
+                prod.setPrice(resultSet.getInt("price"));
+                prod.setQuantity(resultSet.getInt("quantity"));
+                prod.setOwnBy(resultSet.getString("adminName"));
+                prod.setDescription(resultSet.getString("description"));
+                prod.setProductType(resultSet.getString("productType"));
+                prod.setStarRating(5.0);
+                prod.setImageSource("/img/electronic/iphone14pro.png");
+                prod.addCustomerReview(new CustomerReview("Abc", 4.8, "good good", 1));
+                prod.addCustomerReview(new CustomerReview("GGG", 1.8, "bad bad", 1));
+                prod.addCustomerReview(new CustomerReview("CC", 3.8, "so so", 1));
+                prod.addCustomerReview(new CustomerReview("DD", 3.9, "not bad", 1));
+                prodList.add(prod);
+            }
+            resultSet.close();
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Operation done successfully");
+        return prodList;
     }
 }

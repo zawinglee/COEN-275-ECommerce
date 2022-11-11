@@ -35,6 +35,9 @@ public class AdminPageController implements Initializable {
     TextField quantityTextField;
 
     @FXML
+    TextField productTypeTextField;
+
+    @FXML
     TextArea descriptionTextField;
 
     @FXML
@@ -54,6 +57,9 @@ public class AdminPageController implements Initializable {
 
     @FXML
     TableColumn<Product, String> description;
+
+    @FXML
+    TableColumn<Product, String> productType;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,6 +84,7 @@ public class AdminPageController implements Initializable {
                 product.setQuantity(resultSet.getInt("quantity"));
                 product.setOwnBy(resultSet.getString("adminName"));
                 product.setDescription(resultSet.getString("description"));
+                product.setProductType(resultSet.getString("productType"));
                 productList.add(product);
                 System.out.println(product.getTitle());
             }
@@ -94,6 +101,7 @@ public class AdminPageController implements Initializable {
         description.setCellValueFactory(new PropertyValueFactory<Product, String>("description"));
         price.setCellValueFactory(new PropertyValueFactory<Product, Integer>("price"));
         quantity.setCellValueFactory(new PropertyValueFactory<Product, Integer>("quantity"));
+        productType.setCellValueFactory(new PropertyValueFactory<Product, String>("productType"));
 
         productTableView.setItems(productList);
     }
@@ -121,11 +129,14 @@ public class AdminPageController implements Initializable {
         String price = priceTextField.getText();
         String quantity = quantityTextField.getText();
         String description = descriptionTextField.getText();
-        if(prodName.length() == 0 || price.length() == 0 || quantity.length() == 0 || description.length() == 0){
+        String productType = productTypeTextField.getText();
+        if(prodName.length() == 0 || price.length() == 0 || quantity.length() == 0 || description.length() == 0
+                || productType.length() == 0){
             sellerPageMsg.setText("Failed to insert! Adding product should fill out every information field.");
             return;
         }
-        InsertDB.insertProdToSystem(prodName, Integer.valueOf(price), Integer.valueOf(quantity), description, "empty",  LoginController.getPageName());
+        InsertDB.insertProdToSystem(prodName, Integer.valueOf(price), Integer.valueOf(quantity), description, "empty",
+                LoginController.getPageName(), productType);
         sellerPageMsg.setText("Successfully insert!");
         showProducts();
     }
@@ -135,6 +146,7 @@ public class AdminPageController implements Initializable {
         String price = priceTextField.getText();
         String quantity = quantityTextField.getText();
         String description = descriptionTextField.getText();
+        String productType = productTypeTextField.getText();
         int prodCount = SelectDB.selectProdFromSystem(prodName,LoginController.getPageName());
         if(prodCount == 0){
             sellerPageMsg.setText("This is not your product, please retry to edit again");
@@ -149,6 +161,9 @@ public class AdminPageController implements Initializable {
         }
         if(description.length() != 0){
             prod.setDescription(description);
+        }
+        if(productType.length() != 0){
+            prod.setProductType(productType);
         }
         UpdateDB.updateProdInSystem(prod);
         sellerPageMsg.setText("Update successfully!");

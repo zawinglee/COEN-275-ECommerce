@@ -1,5 +1,6 @@
 package com.example.coen275ecommerce;
 
+import db.SelectDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,7 +70,11 @@ public class MainPage implements Initializable {
         product.addCustomerReview(new CustomerReview("DD", 3.9, "not bad", 1));
 
         res.add(product);
-        return res;
+
+        // select all product with electronic type
+        ArrayList<Product> result = SelectDB.selectProdWithProductType("electronic");
+        // result.add(product);
+        return result;
     }
 
     @FXML
