@@ -9,7 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -25,8 +25,9 @@ public class MainPage implements Initializable {
     @FXML private Button electronBtn, menBtn, womenBtn, logoutButton, shoppingCartButton, ordersButton;
 
     @FXML private AnchorPane electronPanel, menPanel, womenPanel;
-    @FXML private VBox electronVBox;
-    @FXML private GridPane electronGridPane;
+    @FXML private FlowPane electronFlowPane;
+
+    private VBox singleProductUI;
 
     private ArrayList<Product> electronics;
 
@@ -37,12 +38,10 @@ public class MainPage implements Initializable {
             for (Product elec : electronics) {
                 FXMLLoader fxml = new FXMLLoader();
                 fxml.setLocation(getClass().getResource("product.fxml"));
-                electronVBox = fxml.load();
+                singleProductUI = fxml.load();
                 ProductController productController = fxml.getController();
                 productController.configureUI(elec);
-
-                electronGridPane.add(electronVBox, 0, 0);
-                GridPane.setMargin(electronVBox, new Insets(10));
+                electronFlowPane.getChildren().add(singleProductUI);
             }
 
         } catch (Exception e) {
@@ -70,11 +69,18 @@ public class MainPage implements Initializable {
         product.addCustomerReview(new CustomerReview("DD", 3.9, "not bad", 1));
 
         res.add(product);
+        res.add(product);
+        res.add(product);
+        res.add(product);
+        res.add(product);
+        res.add(product);
+        res.add(product);
+        res.add(product);
 
         // select all product with electronic type
-        ArrayList<Product> result = SelectDB.selectProdWithProductType("electronic");
+//        ArrayList<Product> result = SelectDB.selectProdWithProductType("electronic");
         // result.add(product);
-        return result;
+        return res;
     }
 
     @FXML
