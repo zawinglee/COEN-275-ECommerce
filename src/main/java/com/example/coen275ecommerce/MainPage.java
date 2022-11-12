@@ -69,7 +69,6 @@ public class MainPage implements Initializable {
         product.addCustomerReview(new CustomerReview("DD", 3.9, "not bad", 1));
 
         res.add(product);
-
         res.add(product);
         res.add(product);
         res.add(product);
