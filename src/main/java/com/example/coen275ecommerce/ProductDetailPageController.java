@@ -5,12 +5,17 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.util.Objects;
 
@@ -27,8 +32,6 @@ public class ProductDetailPageController {
     private Label soldBy;
     @FXML
     private Label starRating;
-    @FXML
-    private VBox customersReviewVBox;
     @FXML
     private VBox customersReviewContainer;
 
@@ -55,6 +58,23 @@ public class ProductDetailPageController {
                     System.out.println("error");
                 }
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @FXML private void showAddReviewDialog() {
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        try {
+            FXMLLoader fxml = new FXMLLoader();
+            fxml.setLocation(getClass().getResource("addReviewDialog.fxml"));
+            Parent root = fxml.load();
+            AddReviewDialogController addReviewDialogController = fxml.getController();
+//            addReviewDialogController.configureUI(getProduct());
+            Scene dialogScene = new Scene(root,400,200);
+            dialog.setScene(dialogScene);
+            dialog.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

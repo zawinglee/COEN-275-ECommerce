@@ -6,16 +6,26 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.ProductDetailPageController">
+<VBox prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.ProductDetailPageController">
    <children>
       <HBox fx:id="topHBox" alignment="CENTER_LEFT" prefHeight="300.0" style="-fx-background-color: grey;">
          <children>
-            <ImageView fx:id="imgSource" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <VBox alignment="CENTER">
+               <ImageView fx:id="imgSource" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <HBox.margin>
+                     <Insets left="100.0" />
+                  </HBox.margin>
+                  <Image url="@../../../img/electronic/iphone14pro.png" />
+               </ImageView>
+               <Button mnemonicParsing="false" text="Add Review" fx:id="addReviewBtn" onAction="#showAddReviewDialog">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+               </Button>
                <HBox.margin>
                   <Insets left="100.0" />
                </HBox.margin>
-                  <Image url="@../../../img/electronic/iphone14pro.png" />
-            </ImageView>
+            </VBox>
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="800.0">
                <HBox.margin>
                   <Insets left="100.0" />
@@ -59,7 +69,7 @@
       <VBox fx:id="customersReviewVBox" prefHeight="400.0">
          <ScrollPane>
             <content>
-               <VBox fx:id="customersReviewContainer"/>
+               <VBox fx:id="customersReviewContainer" />
             </content>
          </ScrollPane>
       </VBox>
