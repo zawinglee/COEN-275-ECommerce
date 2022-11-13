@@ -70,9 +70,9 @@ public class ProductDetailPageController {
             FXMLLoader fxml = new FXMLLoader();
             fxml.setLocation(getClass().getResource("addReviewDialog.fxml"));
             Parent root = fxml.load();
-            AddReviewDialogController addReviewDialogController = fxml.getController();
-//            addReviewDialogController.configureUI(getProduct());
             Scene dialogScene = new Scene(root,400,200);
+            AddReviewDialogController addReviewDialogController = fxml.getController();
+            addReviewDialogController.configure(dialog, "", 1);
             dialog.setScene(dialogScene);
             dialog.show();
         } catch (Exception e) {
