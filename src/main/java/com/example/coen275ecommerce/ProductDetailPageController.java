@@ -34,8 +34,10 @@ public class ProductDetailPageController {
     private Label starRating;
     @FXML
     private VBox customersReviewContainer;
+    private Product product;
 
     public void configureUI(Product product) {
+        this.product = product;
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(product.getImageSource())));
         imgSource.setImage(image);
         title.setText(product.getTitle());
@@ -72,7 +74,7 @@ public class ProductDetailPageController {
             Parent root = fxml.load();
             Scene dialogScene = new Scene(root,400,200);
             AddReviewDialogController addReviewDialogController = fxml.getController();
-            addReviewDialogController.configure(dialog, "", 1);
+            addReviewDialogController.configure(dialog, LoginController.getPageName(), product.getId());
             dialog.setScene(dialogScene);
             dialog.show();
         } catch (Exception e) {
