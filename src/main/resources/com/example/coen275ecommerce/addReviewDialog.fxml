@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coen275ecommerce.AddReviewDialogController">
+   <children>
+      <HBox alignment="CENTER">
+         <children>
+            <Label text="Rating" />
+            <Slider fx:id="numberRating" blockIncrement="0.1" max="5.0" showTickLabels="true" onMouseDragged="#changeLabelHandler" onMouseClicked="#changeLabelHandler">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Slider>
+            <Label text="0.0 / 5.0" fx:id="numberRatingLabel">
+               <HBox.margin>
+                  <Insets bottom="15.0" left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin></HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="40.0">
+         <children>
+            <Label text="Text Review" />
+            <TextField fx:id="textRating">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+      <Button fx:id="doneBtn" mnemonicParsing="false" onAction="#doneBtnAction" text="Done">
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>
