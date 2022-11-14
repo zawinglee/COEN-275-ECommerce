@@ -241,12 +241,13 @@ public class SelectDB {
                 prod.setOwnBy(resultSet.getString("adminName"));
                 prod.setDescription(resultSet.getString("description"));
                 prod.setProductType(resultSet.getString("productType"));
+                prod.setId(resultSet.getInt("id"));
                 prod.setStarRating(5.0);
                 prod.setImageSource("/img/electronic/iphone14pro.png");
-                prod.addCustomerReview(new CustomerReview("Abc", 4.8, "good good", 1));
-                prod.addCustomerReview(new CustomerReview("GGG", 1.8, "bad bad", 1));
-                prod.addCustomerReview(new CustomerReview("CC", 3.8, "so so", 1));
-                prod.addCustomerReview(new CustomerReview("DD", 3.9, "not bad", 1));
+//                prod.addCustomerReview(new CustomerReview("Abc", 4.8, "good good", 1));
+//                prod.addCustomerReview(new CustomerReview("GGG", 1.8, "bad bad", 1));
+//                prod.addCustomerReview(new CustomerReview("CC", 3.8, "so so", 1));
+//                prod.addCustomerReview(new CustomerReview("DD", 3.9, "not bad", 1));
                 prodList.add(prod);
             }
             resultSet.close();
@@ -258,5 +259,36 @@ public class SelectDB {
         }
         System.out.println("Operation done successfully");
         return prodList;
+    }
+
+    public static List<CustomerReview> selectReviewWithProdId(int productId) {
+        List<CustomerReview> list = new ArrayList<>();
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:test.db");
+            c.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            stmt = c.createStatement();
+            String sql = "SELECT * FROM Review WHERE PRODUCT_ID = "  +  productId + ";";
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while (resultSet.next()) {
+                CustomerReview customerReview = new CustomerReview(resultSet.getString("USER_NAME"),
+                        resultSet.getDouble("RATING") ,  resultSet.getString("COMMENT"),
+                        resultSet.getInt("PRODUCT_ID"));
+                customerReview.setNumericRating((double) Math.round(customerReview.getNumericRating() * 100) / 100);
+                list.add(customerReview);
+            }
+            resultSet.close();
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Operation done successfully");
+        return list;
     }
 }

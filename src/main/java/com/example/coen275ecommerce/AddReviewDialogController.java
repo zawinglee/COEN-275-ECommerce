@@ -1,5 +1,6 @@
 package com.example.coen275ecommerce;
 
+import db.InsertDB;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -17,7 +18,8 @@ public class AddReviewDialogController {
     private Stage stage;
 
     @FXML private void doneBtnAction() {
-//        CustomerReview customerReview = new CustomerReview(this.customerUsername, numberRating.getValue(), textRating.getText(), this.productID);
+        CustomerReview review = new CustomerReview(this.customerUsername,  numberRating.getValue(), textRating.getText() , this.productID);
+        InsertDB.insertReview(review);
         numberRating.setValue(0);
         textRating.setText("");
         stage.close();

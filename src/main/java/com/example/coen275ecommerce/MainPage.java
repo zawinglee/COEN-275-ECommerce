@@ -16,6 +16,7 @@ import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainPage implements Initializable {
@@ -51,34 +52,42 @@ public class MainPage implements Initializable {
     }
 
     private ArrayList<Product> generate_electronics() {
-        ArrayList<Product> res = new ArrayList<>();
+        //ArrayList<Product> res = new ArrayList<>();
 
-        Product product = new Product();
-
-        product.setImageSource("/img/electronic/iphone14pro.png");
-        product.setTitle("Apple iPhone 14 Pro");
-        product.setPrice(1299);
-        product.setDescription("the latest iPhone!");
-        product.setId(1);
-        product.setQuantity(999);
-        product.setStarRating(5.0);
-        product.setOwnBy("Apple Inc.");
-        product.addCustomerReview(new CustomerReview("Abc", 4.8, "good good", 1));
-        product.addCustomerReview(new CustomerReview("GGG", 1.8, "bad bad", 1));
-        product.addCustomerReview(new CustomerReview("CC", 3.8, "so so", 1));
-        product.addCustomerReview(new CustomerReview("DD", 3.9, "not bad", 1));
-
-        res.add(product);
-        res.add(product);
-        res.add(product);
-        res.add(product);
-        res.add(product);
-        res.add(product);
-        res.add(product);
-        res.add(product);
+//        Product product = new Product();
+//
+//        product.setImageSource("/img/electronic/iphone14pro.png");
+//        product.setTitle("Apple iPhone 14 Pro");
+//        product.setPrice(1299);
+//        product.setDescription("the latest iPhone!");
+//        product.setId(1);
+//        product.setQuantity(999);
+//        product.setStarRating(5.0);
+//        product.setOwnBy("Apple Inc.");
+//        product.addCustomerReview(new CustomerReview("Abc", 4.8, "good good", 1));
+//        product.addCustomerReview(new CustomerReview("GGG", 1.8, "bad bad", 1));
+//        product.addCustomerReview(new CustomerReview("CC", 3.8, "so so", 1));
+//        product.addCustomerReview(new CustomerReview("DD", 3.9, "not bad", 1));
+//
+//        res.add(product);
+//        res.add(product);
+//        res.add(product);
+//        res.add(product);
+//        res.add(product);
+//        res.add(product);
+//        res.add(product);
+//        res.add(product);
 
         // select all product with electronic type
-//        ArrayList<Product> result = SelectDB.selectProdWithProductType("electronic");
+        ArrayList<Product> res = SelectDB.selectProdWithProductType("electronic");
+        for(Product prod:res){
+            List<CustomerReview> list = SelectDB.selectReviewWithProdId(prod.getId());
+            for(CustomerReview review:list){
+                prod.addCustomerReview(review);
+            }
+        }
+
+
         // result.add(product);
         return res;
     }
