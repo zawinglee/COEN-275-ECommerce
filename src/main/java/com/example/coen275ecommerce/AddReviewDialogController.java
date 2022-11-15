@@ -13,8 +13,8 @@ public class AddReviewDialogController {
     @FXML private TextField textRating;
     @FXML private Label numberRatingLabel;
 
-    String customerUsername;
-    int productID;
+    private String customerUsername;
+    private int productID;
     private Stage stage;
 
     @FXML private void doneBtnAction() {
