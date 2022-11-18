@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class AdminPageController implements Initializable {
     @FXML
-    private Button logoutButton;
+    private Button logoutButton, orderButton;
 
     @FXML
     TextField productNameTextField;
@@ -61,13 +61,15 @@ public class AdminPageController implements Initializable {
     @FXML
     TableColumn<Product, String> productType;
 
+    private static ObservableList<Product> productList;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showProducts();
     }
 
     public ObservableList<Product> getProductsInSystem(){
-        ObservableList<Product> productList = FXCollections.observableArrayList();
+        productList = FXCollections.observableArrayList();
         Connection connection = CreateDB.getConnection();
         String username = LoginController.getPageName();
         String query = "SELECT * FROM Product WHERE adminName = " +"'" + username +"' ;";
@@ -180,5 +182,28 @@ public class AdminPageController implements Initializable {
         DeleteDB.deleteProdInSystem(prodName, LoginController.getPageName());
         sellerPageMsg.setText("Delete successfully!");
         showProducts();
+    }
+
+    public static ObservableList<Product> getProductList(){
+        return productList;
+    }
+
+    public void ordersButtonOnAction(ActionEvent event){
+        Stage stage = (Stage) orderButton.getScene().getWindow();
+        stage.close();
+
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("adminOrder.fxml"));
+            Stage loginStage = new Stage();
+            loginStage.setTitle("COEN 275, Group 3, E-Commerce");
+            Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
+            loginStage.setScene(scene);
+            loginStage.show();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 }
