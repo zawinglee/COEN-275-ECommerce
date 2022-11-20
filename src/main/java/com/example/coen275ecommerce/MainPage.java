@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -23,18 +22,23 @@ public class MainPage implements Initializable {
     @FXML private AnchorPane mainPageAnchor;
     @FXML private AnchorPane leftPanel;
 
-    @FXML private Button electronBtn, menBtn, womenBtn, logoutButton, shoppingCartButton, ordersButton;
+    @FXML private Button electronBtn, shoeBtn, clothesBtn, bagsBtn, foodBtn, vehicleBtn, logoutButton, shoppingCartButton, ordersButton;
 
-    @FXML private AnchorPane electronPanel, menPanel, womenPanel;
-    @FXML private FlowPane electronFlowPane;
+    @FXML private AnchorPane electronPanel, shoePanel, clothesPanel, bagsPanel, foodPanel, vehiclePanel;
+    @FXML private FlowPane electronFlowPane, shoeFlowPane, clothesFlowPane, bagsFlowPane, foodFlowPane, vehicleFlowPane;
 
     private VBox singleProductUI;
 
-    private ArrayList<Product> electronics;
+    private ArrayList<Product> electronics, shoes, clothes, bags, food, vehicles;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        electronics = new ArrayList<Product>(generate_electronics());
+        electronics = new ArrayList<Product>(productGenerator("electronic"));
+        shoes = new ArrayList<Product>(productGenerator("shoes"));
+        clothes = new ArrayList<Product>(productGenerator("clothes"));
+        bags = new ArrayList<Product>(productGenerator("bags"));
+        food = new ArrayList<Product>(productGenerator("food"));
+        vehicles = new ArrayList<Product>(productGenerator("vehicles"));
         try{
             for (Product elec : electronics) {
                 FXMLLoader fxml = new FXMLLoader();
@@ -45,22 +49,65 @@ public class MainPage implements Initializable {
                 electronFlowPane.getChildren().add(singleProductUI);
             }
 
+            for (Product elec : shoes) {
+                FXMLLoader fxml = new FXMLLoader();
+                fxml.setLocation(getClass().getResource("product.fxml"));
+                singleProductUI = fxml.load();
+                ProductController productController = fxml.getController();
+                productController.configureUI(elec);
+                shoeFlowPane.getChildren().add(singleProductUI);
+            }
+
+            for (Product elec : clothes) {
+                FXMLLoader fxml = new FXMLLoader();
+                fxml.setLocation(getClass().getResource("product.fxml"));
+                singleProductUI = fxml.load();
+                ProductController productController = fxml.getController();
+                productController.configureUI(elec);
+                clothesFlowPane.getChildren().add(singleProductUI);
+            }
+
+            for (Product elec : bags) {
+                FXMLLoader fxml = new FXMLLoader();
+                fxml.setLocation(getClass().getResource("product.fxml"));
+                singleProductUI = fxml.load();
+                ProductController productController = fxml.getController();
+                productController.configureUI(elec);
+                bagsFlowPane.getChildren().add(singleProductUI);
+            }
+
+            for (Product elec : food) {
+                FXMLLoader fxml = new FXMLLoader();
+                fxml.setLocation(getClass().getResource("product.fxml"));
+                singleProductUI = fxml.load();
+                ProductController productController = fxml.getController();
+                productController.configureUI(elec);
+                foodFlowPane.getChildren().add(singleProductUI);
+            }
+
+            for (Product elec : vehicles) {
+                FXMLLoader fxml = new FXMLLoader();
+                fxml.setLocation(getClass().getResource("product.fxml"));
+                singleProductUI = fxml.load();
+                ProductController productController = fxml.getController();
+                productController.configureUI(elec);
+                vehicleFlowPane.getChildren().add(singleProductUI);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("error");
         }
     }
 
-    private ArrayList<Product> generate_electronics() {
+    private ArrayList<Product> productGenerator(String category) {
         // select all product with electronic type
-        ArrayList<Product> res = SelectDB.selectProdWithProductType("electronic");
+        ArrayList<Product> res = SelectDB.selectProdWithProductType(category);
         for(Product prod:res){
             List<CustomerReview> list = SelectDB.selectReviewWithProdId(prod.getId());
             for(CustomerReview review:list){
                 prod.addCustomerReview(review);
             }
         }
-        // result.add(product);
         return res;
     }
 
@@ -68,16 +115,46 @@ public class MainPage implements Initializable {
     private void onCategorySelected(ActionEvent event) {
         if (event.getSource() == electronBtn) {
             electronPanel.setVisible(true);
-            menPanel.setVisible(false);
-            womenPanel.setVisible(false);
-        } else if (event.getSource() == menBtn) {
+            shoePanel.setVisible(false);
+            clothesPanel.setVisible(false);
+            bagsPanel.setVisible(false);
+            foodPanel.setVisible(false);
+            vehiclePanel.setVisible(false);
+        } else if (event.getSource() == shoeBtn) {
             electronPanel.setVisible(false);
-            menPanel.setVisible(true);
-            womenPanel.setVisible(false);
-        } else if (event.getSource() == womenBtn) {
+            shoePanel.setVisible(true);
+            clothesPanel.setVisible(false);
+            bagsPanel.setVisible(false);
+            foodPanel.setVisible(false);
+            vehiclePanel.setVisible(false);
+        } else if (event.getSource() == clothesBtn) {
             electronPanel.setVisible(false);
-            menPanel.setVisible(false);
-            womenPanel.setVisible(true);
+            shoePanel.setVisible(false);
+            clothesPanel.setVisible(true);
+            bagsPanel.setVisible(false);
+            foodPanel.setVisible(false);
+            vehiclePanel.setVisible(false);
+        } else if (event.getSource() == bagsBtn) {
+            electronPanel.setVisible(false);
+            shoePanel.setVisible(false);
+            clothesPanel.setVisible(false);
+            bagsPanel.setVisible(true);
+            foodPanel.setVisible(false);
+            vehiclePanel.setVisible(false);
+        } else if (event.getSource() == foodBtn) {
+            electronPanel.setVisible(false);
+            shoePanel.setVisible(false);
+            clothesPanel.setVisible(false);
+            bagsPanel.setVisible(false);
+            foodPanel.setVisible(true);
+            vehiclePanel.setVisible(false);
+        } else if (event.getSource() == vehicleBtn) {
+            electronPanel.setVisible(false);
+            shoePanel.setVisible(false);
+            clothesPanel.setVisible(false);
+            bagsPanel.setVisible(false);
+            foodPanel.setVisible(false);
+            vehiclePanel.setVisible(true);
         }
     }
 

@@ -62,7 +62,7 @@
                             <String fx:value="clothes" />
                             <String fx:value="bags" />
                             <String fx:value="food" />
-                            <String fx:value="clothes" />
+                            <String fx:value="vehicles" />
                         </FXCollections>
                     </items>
                 </ChoiceBox>
