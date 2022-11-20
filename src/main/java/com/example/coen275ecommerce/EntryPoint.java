@@ -17,7 +17,6 @@ public class EntryPoint extends Application {
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
-
     }
 
     public static void main(String[] args) {
