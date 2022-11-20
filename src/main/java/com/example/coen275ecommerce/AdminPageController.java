@@ -35,10 +35,10 @@ public class AdminPageController implements Initializable {
     TextField quantityTextField;
 
     @FXML
-    TextField productTypeTextField;
+    TextArea descriptionTextField;
 
     @FXML
-    TextArea descriptionTextField;
+    ChoiceBox productTypeCheckBox;
 
     @FXML
     Label sellerPageMsg;
@@ -116,7 +116,7 @@ public class AdminPageController implements Initializable {
                     priceTextField.setText(String.valueOf(rowData.getPrice()));
                     quantityTextField.setText(String.valueOf(rowData.getQuantity()));
                     descriptionTextField.setText(rowData.getDescription());
-                    productTypeTextField.setText(rowData.getProductType());
+                    productTypeCheckBox.setValue(rowData.getProductType());
                 }
             });
             return row ;
@@ -146,10 +146,10 @@ public class AdminPageController implements Initializable {
         String price = priceTextField.getText();
         String quantity = quantityTextField.getText();
         String description = descriptionTextField.getText();
-        String productType = productTypeTextField.getText();
+        String productType = (String) productTypeCheckBox.getValue();
         if(prodName.length() == 0 || price.length() == 0 || quantity.length() == 0 || description.length() == 0
                 || productType.length() == 0){
-            sellerPageMsg.setText("Failed to insert! Adding product should fill out every information field.");
+            sellerPageMsg.setText("Failed to insert! Adding should fill out every information field.");
             return;
         }
         InsertDB.insertProdToSystem(prodName, Integer.valueOf(price), Integer.valueOf(quantity), description, "empty",
@@ -163,7 +163,7 @@ public class AdminPageController implements Initializable {
         String price = priceTextField.getText();
         String quantity = quantityTextField.getText();
         String description = descriptionTextField.getText();
-        String productType = productTypeTextField.getText();
+        String productType = (String) productTypeCheckBox.getValue();
         int prodCount = SelectDB.selectProdFromSystem(prodName,LoginController.getPageName());
         if(prodCount == 0){
             sellerPageMsg.setText("This is not your product, please retry to edit again");
@@ -197,6 +197,13 @@ public class AdminPageController implements Initializable {
         DeleteDB.deleteProdInSystem(prodName, LoginController.getPageName());
         sellerPageMsg.setText("Delete successfully!");
         showProducts();
+    }
+
+    public void clearProductionAction(ActionEvent event){
+        productNameTextField.setText("");
+        priceTextField.setText("");
+        quantityTextField.setText("");
+        descriptionTextField.setText("");
     }
 
     public static ObservableList<Product> getProductList(){
