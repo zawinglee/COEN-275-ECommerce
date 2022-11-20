@@ -68,6 +68,7 @@
         <Button fx:id="btnUpdate" layoutX="150.0" layoutY="360.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="85.0" onAction="#updateProductAction" text="Update" />
         <Button fx:id="btnDelete" layoutX="250.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" onAction="#deleteProductionAction" text="Delete" />
         <Button fx:id="orderButton" layoutX="50.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" onAction="#ordersButtonOnAction" text="Order" />
+        <Button fx:id="selectButton" layoutX="50.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" onAction="#ordersButtonOnAction" text="Order" />
         <Button fx:id="logoutButton" layoutX="50.0" layoutY="440.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" onAction="#logoutButtonOnAction" text="Log Out" />
         <Label fx:id="sellerPageMsg" alignment="CENTER_LEFT" layoutX="50.0" layoutY="460.0" prefHeight="38.0" prefWidth="534.0" textFill="#f50808">
             <font>
