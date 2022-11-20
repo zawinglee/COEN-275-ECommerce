@@ -62,7 +62,6 @@ public class AdminOrderController implements Initializable {
         stage.close();
 
         try {
-
             FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("adminPage.fxml"));
             Stage mainStage = new Stage();
             mainStage.setTitle("COEN 275, Group 3, E-Commerce");
@@ -79,7 +78,7 @@ public class AdminOrderController implements Initializable {
 
 
 
-    public ObservableList<ProductInCart> getProductsInCart(String prodName){
+    public ObservableList<ProductInCart> getProductOrderHistory(String prodName){
         Connection connection = CreateDB.getConnection();
         String username = LoginController.getPageName();
         String query = "SELECT * FROM Orders WHERE PROD_NAME = " +"'" + prodName+"' ;";
@@ -104,7 +103,7 @@ public class AdminOrderController implements Initializable {
     public void showProducts(){
         productList = FXCollections.observableArrayList();
         for(Product prod:AdminPageController.getProductList()){
-            getProductsInCart(prod.getTitle());
+            getProductOrderHistory(prod.getTitle());
         }
 
         productName.setCellValueFactory(new PropertyValueFactory<ProductInCart, String>("name"));

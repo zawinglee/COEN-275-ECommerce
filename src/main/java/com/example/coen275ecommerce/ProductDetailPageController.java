@@ -2,6 +2,9 @@ package com.example.coen275ecommerce;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.util.Objects;
 
@@ -68,6 +72,24 @@ public class ProductDetailPageController {
     @FXML private void showAddReviewDialog() {
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.addEventHandler(WindowEvent.ANY, new EventHandler<Event>() {
+            @Override
+            public void handle(Event event) {
+                if (event.getEventType() == WindowEvent.WINDOW_HIDDEN){
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(EntryPoint.class.getResource("mainPage.fxml"));
+                        Stage mainStage = new Stage();
+                        mainStage.setTitle("COEN 275, Group 3, E-Commerce");
+                        Scene scene = new Scene(fxmlLoader.load(), 1300, 700);
+                        mainStage.setScene(scene);
+                        mainStage.show();
+                        title.getScene().getWindow().hide();
+                    } catch (Exception e) {
+
+                    }
+                }
+            }
+        });
         try {
             FXMLLoader fxml = new FXMLLoader();
             fxml.setLocation(getClass().getResource("addReviewDialog.fxml"));

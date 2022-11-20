@@ -52,32 +52,6 @@ public class MainPage implements Initializable {
     }
 
     private ArrayList<Product> generate_electronics() {
-        //ArrayList<Product> res = new ArrayList<>();
-
-//        Product product = new Product();
-//
-//        product.setImageSource("/img/electronic/iphone14pro.png");
-//        product.setTitle("Apple iPhone 14 Pro");
-//        product.setPrice(1299);
-//        product.setDescription("the latest iPhone!");
-//        product.setId(1);
-//        product.setQuantity(999);
-//        product.setStarRating(5.0);
-//        product.setOwnBy("Apple Inc.");
-//        product.addCustomerReview(new CustomerReview("Abc", 4.8, "good good", 1));
-//        product.addCustomerReview(new CustomerReview("GGG", 1.8, "bad bad", 1));
-//        product.addCustomerReview(new CustomerReview("CC", 3.8, "so so", 1));
-//        product.addCustomerReview(new CustomerReview("DD", 3.9, "not bad", 1));
-//
-//        res.add(product);
-//        res.add(product);
-//        res.add(product);
-//        res.add(product);
-//        res.add(product);
-//        res.add(product);
-//        res.add(product);
-//        res.add(product);
-
         // select all product with electronic type
         ArrayList<Product> res = SelectDB.selectProdWithProductType("electronic");
         for(Product prod:res){
@@ -86,8 +60,6 @@ public class MainPage implements Initializable {
                 prod.addCustomerReview(review);
             }
         }
-
-
         // result.add(product);
         return res;
     }
