@@ -49,48 +49,48 @@ public class MainPage implements Initializable {
                 electronFlowPane.getChildren().add(singleProductUI);
             }
 
-            for (Product elec : shoes) {
+            for (Product shoe : shoes) {
                 FXMLLoader fxml = new FXMLLoader();
                 fxml.setLocation(getClass().getResource("product.fxml"));
                 singleProductUI = fxml.load();
                 ProductController productController = fxml.getController();
-                productController.configureUI(elec);
+                productController.configureUI(shoe);
                 shoeFlowPane.getChildren().add(singleProductUI);
             }
 
-            for (Product elec : clothes) {
+            for (Product cloth : clothes) {
                 FXMLLoader fxml = new FXMLLoader();
                 fxml.setLocation(getClass().getResource("product.fxml"));
                 singleProductUI = fxml.load();
                 ProductController productController = fxml.getController();
-                productController.configureUI(elec);
+                productController.configureUI(cloth);
                 clothesFlowPane.getChildren().add(singleProductUI);
             }
 
-            for (Product elec : bags) {
+            for (Product bag : bags) {
                 FXMLLoader fxml = new FXMLLoader();
                 fxml.setLocation(getClass().getResource("product.fxml"));
                 singleProductUI = fxml.load();
                 ProductController productController = fxml.getController();
-                productController.configureUI(elec);
+                productController.configureUI(bag);
                 bagsFlowPane.getChildren().add(singleProductUI);
             }
 
-            for (Product elec : food) {
+            for (Product f : food) {
                 FXMLLoader fxml = new FXMLLoader();
                 fxml.setLocation(getClass().getResource("product.fxml"));
                 singleProductUI = fxml.load();
                 ProductController productController = fxml.getController();
-                productController.configureUI(elec);
+                productController.configureUI(f);
                 foodFlowPane.getChildren().add(singleProductUI);
             }
 
-            for (Product elec : vehicles) {
+            for (Product v : vehicles) {
                 FXMLLoader fxml = new FXMLLoader();
                 fxml.setLocation(getClass().getResource("product.fxml"));
                 singleProductUI = fxml.load();
                 ProductController productController = fxml.getController();
-                productController.configureUI(elec);
+                productController.configureUI(v);
                 vehicleFlowPane.getChildren().add(singleProductUI);
             }
         } catch (Exception e) {

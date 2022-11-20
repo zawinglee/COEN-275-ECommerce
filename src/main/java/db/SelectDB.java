@@ -6,9 +6,8 @@ import com.example.coen275ecommerce.User;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Random;
 
 
 public class SelectDB {
@@ -246,7 +245,11 @@ public class SelectDB {
                 prod.setProductType(resultSet.getString("productType"));
                 prod.setId(resultSet.getInt("id"));
                 prod.setStarRating(5.0);
-                prod.setImageSource("/img/electronic/iphone14pro.png");
+
+                Random ran = new Random();
+                int x = ran.nextInt(4) + 1;
+
+                prod.setImageSource("/img/randomPics/placeHolder" + String.valueOf(x) + ".png");
 //                prod.addCustomerReview(new CustomerReview("Abc", 4.8, "good good", 1));
 //                prod.addCustomerReview(new CustomerReview("GGG", 1.8, "bad bad", 1));
 //                prod.addCustomerReview(new CustomerReview("CC", 3.8, "so so", 1));
