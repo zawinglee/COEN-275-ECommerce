@@ -1,5 +1,6 @@
 package com.example.coen275ecommerce;
 
+import db.SelectDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -90,32 +91,11 @@ public class LoginController implements Initializable {
             String curUserName = usernameTextField.getText();
             String curPassword = enterPasswordField.getText();
             int admin = isAdminCheckBox.isSelected() ? 1 : 0;
-            int count = 0;
-            Connection c = null;
-            Statement stmt = null;
-            try {
-                Class.forName("org.sqlite.JDBC");
-                c = DriverManager.getConnection("jdbc:sqlite:test.db");
-                c.setAutoCommit(false);
-                System.out.println("Opened database successfully");
-
-                stmt = c.createStatement();
-                String sql = "SELECT count(*) FROM User WHERE userName = "  + "'" + curUserName + "'" + " AND password = " + "'" + curPassword + "'"
-                        + "AND isAdmin = " + String.valueOf(admin);
-                ResultSet rs = stmt.executeQuery( sql);
-                while ( rs.next() ) {
-                    count=rs.getInt(1);
-                }
-                System.out.println(count);
-                rs.close();
-                stmt.close();
-                c.close();
-            } catch ( Exception e ) {
-                System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-                System.exit(0);
-            }
-            System.out.println("Operation done successfully");
-
+            User user = new User();
+            user.setUsername(curUserName);
+            user.setPassword(curPassword);
+            user.setUserType(admin);
+            int count = SelectDB.selectUserCount(user);
             if(count>0){
                 loginMessageLabel.setText("Welcome!");
                 pageUsername = curUserName;

@@ -168,10 +168,14 @@ public class SignupController implements Initializable {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         users.put(username, password);
-        insertUser(username, password, isAdmin);
+        User user = new User();
+        user.setUserType(isAdmin);
+        user.setUsername(username);
+        user.setPassword(password);
+        insertUser(user);
     }
 
-    public static void insertUser(String userName, String password, int isAdmin) {
+    public static void insertUser(User user) {
         Connection c;
         Statement stmt;
         try {
@@ -182,7 +186,7 @@ public class SignupController implements Initializable {
 
             stmt = c.createStatement();
             String sql = "INSERT INTO User (userName, password, isAdmin) " +
-                    "VALUES (" + "'" + userName + "'" + "," + "'" + password + "'" + ","  + String.valueOf(isAdmin) +  ");";
+                    "VALUES (" + "'" + user.getUsername() + "'" + "," + "'" + user.getPassword() + "'" + ","  + String.valueOf(user.getUserType()) +  ");";
             stmt.executeUpdate(sql);
 
             stmt.close();

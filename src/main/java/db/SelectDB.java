@@ -2,6 +2,7 @@ package db;
 import com.example.coen275ecommerce.CustomerReview;
 import com.example.coen275ecommerce.Product;
 import com.example.coen275ecommerce.ProductInCart;
+import com.example.coen275ecommerce.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,6 +14,11 @@ import java.util.Map;
 public class SelectDB {
     public static void main( String args[])
     {
+
+    }
+
+    public static int selectUserCount(User user){
+        int count = 0;
         Connection c = null;
         Statement stmt = null;
         try {
@@ -22,13 +28,9 @@ public class SelectDB {
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
-            String userName = "lin";
-            String password = "123";
-            int isAdmin = 0;
-            String sql = "SELECT count(*) FROM User WHERE userName = "  + "'" + userName + "'" + " AND password = " + "'" + password + "'"
-                    + "AND isAdmin = " + String.valueOf(isAdmin);
+            String sql = "SELECT count(*) FROM User WHERE userName = "  + "'" + user.getUsername() + "'" + " AND password = " + "'" + user.getPassword() + "'"
+                    + "AND isAdmin = " + String.valueOf(user.getUserType());
             ResultSet rs = stmt.executeQuery( sql);
-            int count = 0;
             while ( rs.next() ) {
                 count=rs.getInt(1);
             }
@@ -41,6 +43,7 @@ public class SelectDB {
             System.exit(0);
         }
         System.out.println("Operation done successfully");
+        return count;
     }
 
     public static ProductInCart selectProdFromCart(String username, String prodName) {
