@@ -106,6 +106,21 @@ public class AdminPageController implements Initializable {
         productType.setCellValueFactory(new PropertyValueFactory<Product, String>("productType"));
 
         productTableView.setItems(productList);
+
+        productTableView.setRowFactory(tv -> {
+            TableRow<Product> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
+                    Product rowData = row.getItem();
+                    productNameTextField.setText(rowData.getTitle());
+                    priceTextField.setText(String.valueOf(rowData.getPrice()));
+                    quantityTextField.setText(String.valueOf(rowData.getQuantity()));
+                    descriptionTextField.setText(rowData.getDescription());
+                    productTypeTextField.setText(rowData.getProductType());
+                }
+            });
+            return row ;
+        });
     }
 
     public void logoutButtonOnAction(ActionEvent event){

@@ -103,6 +103,18 @@ public class ShoppingCartController implements Initializable {
         totalPrice.setCellValueFactory(new PropertyValueFactory<ProductInCart, String>("totalPrice"));
 
         cartTableView.setItems(productList);
+
+        cartTableView.setRowFactory(tv -> {
+            TableRow<ProductInCart> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
+                    ProductInCart rowData = row.getItem();
+                    deletedProdNameTextField.setText(rowData.getName());
+                    deletedQuantityTextField.setText(String.valueOf(rowData.getQuantity()));
+                }
+            });
+            return row ;
+        });
     }
 
     public void continueShoppingButtonOnAction(ActionEvent event) {
