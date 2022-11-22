@@ -17,7 +17,6 @@ public class UpdateDB {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:test.db");
             connection.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = connection.createStatement();
             String prodName = product.getName();
@@ -46,7 +45,6 @@ public class UpdateDB {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:test.db");
             connection.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = connection.createStatement();
             String prodName = product.getTitle();
@@ -55,11 +53,13 @@ public class UpdateDB {
             String description = product.getDescription();
             String adminName = product.getOwnBy();
             String productType = product.getProductType();
+            String imgUrl = product.getImageSource();
             String sql = "UPDATE Product "+
                     "SET quantity = " + quantity +", "+
                     "price = " + price  + ", "+
                     "description = " + "'"+ description + "'"+ "," +
-                    "productType = " + "'"+ productType + "'" +
+                    "productType = " + "'"+ productType + "'" + "," +
+                    "image = " + "'" + imgUrl + "'" +
                     " WHERE name = "+"'"+ prodName +"'" +" AND "+"adminName = "+"'"+ adminName+"'"+";";
             System.out.println(sql);
             stmt.executeUpdate(sql);

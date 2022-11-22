@@ -13,7 +13,6 @@ public class DeleteDB {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:test.db");
             connection.setAutoCommit(false);
-            System.out.println("Opened database successfully");
             stmt = connection.createStatement();
             String sql = "DELETE  FROM Shopping_Cart "+ "WHERE USER_NAME = "+"'"+ username +"'" +" AND "+"PROD_NAME = "+"'"+ prodName+"'"+";";
             System.out.println(sql);
@@ -35,7 +34,6 @@ public class DeleteDB {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:test.db");
             connection.setAutoCommit(false);
-            System.out.println("Opened database successfully");
             stmt = connection.createStatement();
             String sql = "DELETE  FROM Shopping_Cart "+ "WHERE USER_NAME = "+"'"+ username +"'" +";";
             System.out.println(sql);
@@ -58,7 +56,6 @@ public class DeleteDB {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:test.db");
             connection.setAutoCommit(false);
-            System.out.println("Opened database successfully");
             stmt = connection.createStatement();
             String sql = "DELETE FROM Product "+ "WHERE name = "+"'"+ prodName +"'" +" AND "+"adminName = "+"'"+ adminName+"'"+";";
             System.out.println(sql);

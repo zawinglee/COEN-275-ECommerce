@@ -142,7 +142,6 @@ public class SignupController implements Initializable {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "SELECT count(*) FROM User WHERE userName = "  + "'" + userName + "'";

@@ -13,6 +13,8 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane id="adminAnchorPane" prefHeight="416.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.example.coen275ecommerce.AdminPageController">
     <children>
         <Label layoutX="32.0" layoutY="18.0" prefHeight="41.0" prefWidth="514.0" text="Seller Management" textFill="#070707">
@@ -47,6 +49,11 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
+                <Label text="Image">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
             </children>
         </VBox>
         <VBox layoutX="160.0" layoutY="100.0" prefHeight="214.0" prefWidth="192.0" spacing="10.0">
@@ -67,6 +74,7 @@
                     </items>
                 </ChoiceBox>
                 <TextArea fx:id="descriptionTextField" layoutX="10.0" layoutY="35.0" prefHeight="150.0" />
+                <Button fx:id="imageButton" layoutX="10.0" layoutY="360.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="85.0" onAction="#uploadImageAction" text="Upload" />
             </children>
         </VBox>
         <TableView fx:id="productTableView" layoutX="480.0" layoutY="100.0" prefHeight="450.0" prefWidth="700.0">
@@ -76,6 +84,7 @@
                 <TableColumn fx:id="quantity" prefWidth="100.0" text="Quantity" />
                 <TableColumn fx:id="productType" prefWidth="100.0" text="Product Type" />
                 <TableColumn fx:id="description" prefWidth="300.0" text="Description" />
+                <TableColumn fx:id="imgSource" prefWidth="0.5" text="" />
             </columns>
         </TableView>
         <Button fx:id="btnInsert" layoutX="50.0" layoutY="360.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="85.0" onAction="#addProductAction" text="Insert" />
@@ -90,5 +99,9 @@
                 <Font size="16.0" />
             </font>
         </Label>
+        <ImageView fx:id="imageDisplay" layoutX="50.0" layoutY="500.0" fitHeight="173.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>

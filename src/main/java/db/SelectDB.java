@@ -24,7 +24,6 @@ public class SelectDB {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "SELECT count(*) FROM User WHERE userName = "  + "'" + user.getUsername() + "'" + " AND password = " + "'" + user.getPassword() + "'"
@@ -41,7 +40,6 @@ public class SelectDB {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        System.out.println("Operation done successfully");
         return count;
     }
 
@@ -53,7 +51,6 @@ public class SelectDB {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "SELECT * FROM Shopping_Cart WHERE USER_NAME = "  + "'" + username + "'" + " AND PROD_NAME = " + "'" + prodName + "'"
@@ -69,7 +66,6 @@ public class SelectDB {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        System.out.println("Operation done successfully");
         return prod;
     }
 
@@ -81,7 +77,6 @@ public class SelectDB {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "SELECT * FROM Shopping_Cart WHERE USER_NAME = "  + "'" + username + "'" + ";";
@@ -97,7 +92,6 @@ public class SelectDB {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        System.out.println("Operation done successfully");
         return list;
     }
 
@@ -109,7 +103,6 @@ public class SelectDB {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "SELECT count(*) FROM Shopping_Cart WHERE USER_NAME = "  + "'" + username + "'" + ";";
@@ -124,7 +117,6 @@ public class SelectDB {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        System.out.println("Operation done successfully");
         return count;
     }
 
@@ -136,7 +128,6 @@ public class SelectDB {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "SELECT count(*) FROM Product WHERE name = "  + "'" + prodName + "'" +
@@ -152,7 +143,6 @@ public class SelectDB {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        System.out.println("Operation done successfully");
         return count;
     }
 
@@ -164,7 +154,6 @@ public class SelectDB {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "SELECT * FROM Product WHERE name = "  + "'" + prodName + "'" +
@@ -186,7 +175,6 @@ public class SelectDB {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        System.out.println("Operation done successfully");
         return prod;
     }
 
@@ -198,7 +186,6 @@ public class SelectDB {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "SELECT * FROM Product WHERE name = "  + "'" + prodName + "'" + ";";
@@ -219,7 +206,6 @@ public class SelectDB {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        System.out.println("Operation done successfully");
         return prod;
     }
 
@@ -231,7 +217,6 @@ public class SelectDB {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
             stmt = c.createStatement();
             String sql = "SELECT * FROM Product WHERE productType = "  + "'" + productType + "'" + ";";
             ResultSet resultSet = stmt.executeQuery(sql);
@@ -245,23 +230,23 @@ public class SelectDB {
                 prod.setProductType(resultSet.getString("productType"));
                 prod.setId(resultSet.getInt("id"));
                 prod.setStarRating(5.0);
-
-                Random ran = new Random();
-                int x = ran.nextInt(5) + 1;
-
-                if (resultSet.getString("productType").equals("electronic")) {
-                    prod.setImageSource("/img/electronic/electronic" + String.valueOf(x) + ".jpg");
-                } else if (resultSet.getString("productType").equals("bags")) {
-                    prod.setImageSource("/img/bags/bags" + String.valueOf(x) + ".jpg");
-                } else if (resultSet.getString("productType").equals("clothes")) {
-                    prod.setImageSource("/img/clothes/clothes" + String.valueOf(x) + ".jpg");
-                } else if (resultSet.getString("productType").equals("food")) {
-                    prod.setImageSource("/img/food/foods" + String.valueOf(x) + ".jpg");
-                } else if (resultSet.getString("productType").equals("shoes")) {
-                    prod.setImageSource("/img/shoes/shoes" + String.valueOf(x) + ".jpg");
-                } else if (resultSet.getString("productType").equals("vehicles")) {
-                    prod.setImageSource("/img/vehicle/vehicle" + String.valueOf(x) + ".jpg");
-                }
+                prod.setImageSource(resultSet.getString("image"));
+//                Random ran = new Random();
+//                int x = ran.nextInt(5) + 1;
+//
+//                if (resultSet.getString("productType").equals("electronic")) {
+//                    prod.setImageSource("/img/electronic/electronic" + String.valueOf(x) + ".jpg");
+//                } else if (resultSet.getString("productType").equals("bags")) {
+//                    prod.setImageSource("/img/bags/bags" + String.valueOf(x) + ".jpg");
+//                } else if (resultSet.getString("productType").equals("clothes")) {
+//                    prod.setImageSource("/img/clothes/clothes" + String.valueOf(x) + ".jpg");
+//                } else if (resultSet.getString("productType").equals("food")) {
+//                    prod.setImageSource("/img/food/foods" + String.valueOf(x) + ".jpg");
+//                } else if (resultSet.getString("productType").equals("shoes")) {
+//                    prod.setImageSource("/img/shoes/shoes" + String.valueOf(x) + ".jpg");
+//                } else if (resultSet.getString("productType").equals("vehicles")) {
+//                    prod.setImageSource("/img/vehicle/vehicle" + String.valueOf(x) + ".jpg");
+//                }
 //                prod.addCustomerReview(new CustomerReview("Abc", 4.8, "good good", 1));
 //                prod.addCustomerReview(new CustomerReview("GGG", 1.8, "bad bad", 1));
 //                prod.addCustomerReview(new CustomerReview("CC", 3.8, "so so", 1));
@@ -275,7 +260,6 @@ public class SelectDB {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        System.out.println("Operation done successfully");
         return prodList;
     }
 
@@ -287,7 +271,6 @@ public class SelectDB {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "SELECT * FROM Review WHERE PRODUCT_ID = "  +  productId + ";";
@@ -306,7 +289,6 @@ public class SelectDB {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        System.out.println("Operation done successfully");
         return list;
     }
 }

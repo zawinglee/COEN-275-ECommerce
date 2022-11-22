@@ -15,7 +15,6 @@ public class InsertDB
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
             String name = "tom";
@@ -42,7 +41,6 @@ public class InsertDB
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:test.db");
             connection.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = connection.createStatement();
             String prodName = product.getName();
@@ -76,7 +74,6 @@ public class InsertDB
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:test.db");
             connection.setAutoCommit(false);
-            System.out.println("Opened database successfully");
 
             stmt = connection.createStatement();
             String prodName = product.getName();
