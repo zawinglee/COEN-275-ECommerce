@@ -11,7 +11,7 @@
         <AnchorPane fx:id="leftPanel" prefHeight="700.0" prefWidth="200.0" style="-fx-background-color: lightblue;">
             <children>
                 <VBox alignment="CENTER_RIGHT" prefWidth="200">
-                    <Button fx:id="electronBtn" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Electronic">
+                    <Button fx:id="electronBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Electronic">
                         <graphic>
                             <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -26,7 +26,7 @@
                      <Insets top="20.0" />
                   </VBox.margin>
                     </Button>
-                    <Button fx:id="shoeBtn" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Shoes">
+                    <Button fx:id="shoeBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Shoes">
                         <graphic>
                             <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -38,7 +38,7 @@
                             <Font size="20.0" />
                         </font>
                     </Button>
-                    <Button fx:id="clothesBtn" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Clothes">
+                    <Button fx:id="clothesBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Clothes">
                         <graphic>
                             <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -50,7 +50,7 @@
                             <Font size="20.0" />
                         </font>
                     </Button>
-                    <Button fx:id="bagsBtn" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Bag">
+                    <Button fx:id="bagsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Bag">
                         <graphic>
                             <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -62,7 +62,7 @@
                             <Font size="20.0" />
                         </font>
                     </Button>
-                    <Button fx:id="foodBtn" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Food">
+                    <Button fx:id="foodBtn" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Food">
                         <graphic>
                             <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -74,7 +74,7 @@
                             <Font size="20.0" />
                         </font>
                     </Button>
-                    <Button fx:id="vehicleBtn" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Vehicle">
+                    <Button fx:id="vehicleBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onCategorySelected" prefHeight="60.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Vehicle">
                         <graphic>
                             <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                 <image>

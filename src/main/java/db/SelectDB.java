@@ -247,9 +247,21 @@ public class SelectDB {
                 prod.setStarRating(5.0);
 
                 Random ran = new Random();
-                int x = ran.nextInt(4) + 1;
+                int x = ran.nextInt(5) + 1;
 
-                prod.setImageSource("/img/randomPics/placeHolder" + String.valueOf(x) + ".png");
+                if (resultSet.getString("productType").equals("electronic")) {
+                    prod.setImageSource("/img/electronic/electronic" + String.valueOf(x) + ".jpg");
+                } else if (resultSet.getString("productType").equals("bags")) {
+                    prod.setImageSource("/img/bags/bags" + String.valueOf(x) + ".jpg");
+                } else if (resultSet.getString("productType").equals("clothes")) {
+                    prod.setImageSource("/img/clothes/clothes" + String.valueOf(x) + ".jpg");
+                } else if (resultSet.getString("productType").equals("food")) {
+                    prod.setImageSource("/img/food/foods" + String.valueOf(x) + ".jpg");
+                } else if (resultSet.getString("productType").equals("shoes")) {
+                    prod.setImageSource("/img/shoes/shoes" + String.valueOf(x) + ".jpg");
+                } else if (resultSet.getString("productType").equals("vehicles")) {
+                    prod.setImageSource("/img/vehicle/vehicle" + String.valueOf(x) + ".jpg");
+                }
 //                prod.addCustomerReview(new CustomerReview("Abc", 4.8, "good good", 1));
 //                prod.addCustomerReview(new CustomerReview("GGG", 1.8, "bad bad", 1));
 //                prod.addCustomerReview(new CustomerReview("CC", 3.8, "so so", 1));
