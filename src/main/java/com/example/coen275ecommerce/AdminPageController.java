@@ -191,7 +191,6 @@ public class AdminPageController implements Initializable {
                 LoginController.getPageName(), productType);
         sellerPageMsg.setText("Successfully insert!");
         showProducts();
-        showProducts();
     }
 
     public void updateProductAction(ActionEvent event) {
