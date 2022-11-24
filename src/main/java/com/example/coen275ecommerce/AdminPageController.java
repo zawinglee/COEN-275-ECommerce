@@ -133,6 +133,7 @@ public class AdminPageController implements Initializable {
                     priceTextField.setText(String.valueOf(rowData.getPrice()));
                     quantityTextField.setText(String.valueOf(rowData.getQuantity()));
                     descriptionTextField.setText(rowData.getDescription());
+                    productTypeCheckBox.setValue(String.valueOf(rowData.getProductType()));
                     String imgUrl = "src/main/resources" + rowData.getImageSource();
                     File file = new File(imgUrl);
                     Image image = new Image(file.toURI().toString());
@@ -221,20 +222,19 @@ public class AdminPageController implements Initializable {
         if (productType.equals("vehicles")) {
             imgDirType = "vehicle";
         }
-        if (prodImage != null) {
-            // image processing
-            Image imageToBeSaved = imageDisplay.getImage();
-            String fileName = "src/main/resources/img/" + imgDirType + "/" + prodName + ".jpg";
-            String storeFileName = "/img/" + imgDirType + "/" + prodName + ".jpg";
-            File outputFile = new File(fileName);
-            BufferedImage bImage = SwingFXUtils.fromFXImage(imageToBeSaved, null);
-            try {
-                ImageIO.write(bImage, "jpg", outputFile);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            prod.setImageSource(storeFileName);
+        // image processing
+        Image imageToBeSaved = imageDisplay.getImage();
+        String fileName = "src/main/resources/img/" + imgDirType + "/" + prodName + ".jpg";
+        String storeFileName = "/img/" + imgDirType + "/" + prodName + ".jpg";
+        File outputFile = new File(fileName);
+        BufferedImage bImage = SwingFXUtils.fromFXImage(imageToBeSaved, null);
+        try {
+            ImageIO.write(bImage, "jpg", outputFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        System.out.println(storeFileName);
+        prod.setImageSource(storeFileName);
         UpdateDB.updateProdInSystem(prod);
         sellerPageMsg.setText("Update successfully!");
         showProducts();

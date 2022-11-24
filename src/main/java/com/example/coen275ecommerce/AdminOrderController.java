@@ -80,7 +80,6 @@ public class AdminOrderController implements Initializable {
 
     public ObservableList<ProductInCart> getProductOrderHistory(String prodName){
         Connection connection = CreateDB.getConnection();
-        String username = LoginController.getPageName();
         String query = "SELECT * FROM Orders WHERE PROD_NAME = " +"'" + prodName+"' ;";
         Statement statement;
         ResultSet resultSet;
