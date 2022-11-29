@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ProductController {
@@ -48,7 +49,7 @@ public class ProductController {
 
     public void configureUI(Product product) {
         setProduct(product);
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(product.getImageSource())));
+        Image image = new Image(new File("src/main/resources/" + product.getImageSource()).toURI().toString());
         productImage.setImage(image);
         nameLabel.setText(product.getTitle());
         priceLabel.setText("$" + String.valueOf(product.getPrice()));
